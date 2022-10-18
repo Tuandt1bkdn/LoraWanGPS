@@ -1,5 +1,7 @@
+import Map from "~/components/Layout/components/Map";
+
 function Searching() {
-  return <h2>Searching Page</h2>;
+  return <Map></Map>;
 }
 
 export default Searching;
