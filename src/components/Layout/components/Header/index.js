@@ -47,7 +47,7 @@ function Header() {
           <div className={cx("image")} />
         </span>
         <div className={cx("title")}>
-          <b>LoRaWan GPS</b>
+          <b>LoRaWAN GPS</b>
         </div>
         <div className={cx("action")}>
           {currentUser ? (
