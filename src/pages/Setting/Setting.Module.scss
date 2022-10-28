@@ -1,0 +1,45 @@
+.content1{
+    width: 1000px;
+    height: 250px;
+    margin-left: 80px;
+    margin-top: 50px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text{
+    
+    height: 70%;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+}
+.thong-so{
+    font-size: 23px;
+    font-family:'Times New Roman', Times, 
+}
+
+.content2{
+    width: 1000px;
+    height: 250px;
+    margin-left: 80px;
+    margin-top: 50px;
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.test{
+    width: 500px;
+    height: 100px;
+    border: solid;
+    border-color: rgb(80, 72, 72);
+}
+
+.bang{
+    border: 1px solid;
+}

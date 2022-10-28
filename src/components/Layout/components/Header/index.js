@@ -19,22 +19,22 @@ const AVATAR_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faCircleInfo} />,
     title: "Thông tin",
-    to: "/info",
+    to: "/thong-tin",
   },
   {
     icon: <FontAwesomeIcon icon={faClockRotateLeft} />,
     title: "Lịch sử",
-    to: "/history",
+    to: "/lich-su",
   },
   {
     icon: <FontAwesomeIcon icon={faGear} />,
     title: "Điều chỉnh",
-    to: "/change",
+    to: "/kiem-tra",
   },
   {
     icon: <FontAwesomeIcon icon={faSignOut} />,
     title: "Đăng xuất",
-    to: "/login",
+    to: "/dang-nhap",
   },
 ];
 
@@ -46,9 +46,7 @@ function Header() {
         <span className={cx("location")}>
           <div className={cx("image")} />
         </span>
-        <div className={cx("title")}>
-          <b>LoRaWAN GPS</b>
-        </div>
+        <div className={cx("title")}>LoRaWAN GPS</div>
         <div className={cx("action")}>
           {currentUser ? (
             <Avatar items={AVATAR_ITEMS}>
