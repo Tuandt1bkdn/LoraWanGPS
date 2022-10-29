@@ -21,14 +21,19 @@ function Setting() {
         <div>
           <table className={cx("test")}>
             <tr>
-              <th className={cx("bang")}>Ngày kiểm tra</th>
-              <th className={cx("bang")}>Điện áp</th>
-              <th className={cx("bang")}>Nhiệt độ nước</th>
+              <th className={cx("bang1")}>Ngày kiểm tra</th>
+              <th className={cx("bang1")}>Điện áp</th>
+              <th className={cx("bang1")}>Nhiệt độ nước</th>
             </tr>
             <tr>
-              <th className={cx("bang")}>27/02/2012</th>
-              <th className={cx("bang")}>27 V</th>
-              <th className={cx("bang")}>73*C</th>
+              <th className={cx("bang2")}>27/02/2012</th>
+              <th className={cx("bang2")}>27 V</th>
+              <th className={cx("bang2")}>73*C</th>
+            </tr>
+            <tr>
+              <th className={cx("bang2")}>27/02/2012</th>
+              <th className={cx("bang2")}>32 V</th>
+              <th className={cx("bang2")}>54*C</th>
             </tr>
           </table>
         </div>

@@ -35,11 +35,15 @@
 
 .test{
     width: 500px;
-    height: 100px;
+    height: 1000px;
     border: solid;
     border-color: rgb(80, 72, 72);
 }
 
-.bang{
+.bang1{
     border: 1px solid;
+}
+.bang2{
+    border-right: 1px solid;
+    border-bottom: 1px solid;
 }
