@@ -12,6 +12,7 @@ import {
   faGear,
   faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "../Sidebar";
 
 const cx = classNames.bind(styles);
 
@@ -46,15 +47,18 @@ function Header() {
         <span className={cx("location")}>
           <div className={cx("image")} />
         </span>
-        <div className={cx("title")}>LoRaWAN GPS</div>
+        <Sidebar />
         <div className={cx("action")}>
           {currentUser ? (
             <Avatar items={AVATAR_ITEMS}>
-              <img
-                src="https://photocross.net/wp-content/uploads/2020/03/anh-chan-dung.jpg"
-                className={cx("avatar")}
-                alt="Nguyen Anh Tuan"
-              />
+              <div className={cx("avatar_wrapper")}>
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png?w=360"
+                  className={cx("avatar")}
+                  alt="Nguyen Anh Tuan"
+                />
+                <div>username123</div>
+              </div>
             </Avatar>
           ) : (
             <>

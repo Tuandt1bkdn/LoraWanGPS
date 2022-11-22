@@ -1,10 +1,20 @@
+.wrapper{
+    margin-left: 200px;
+}
+
 .checking-location{
-    width: 1100px;
-    height: 130px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    margin-left: 100px;
+    border: 5px solid gray;
+    border-top-color: blue;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation-name: spin 1s linear infitite;
+    @keyframes spin {
+        0% { transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+    }
+   
 }
 
 .map{
@@ -16,15 +26,26 @@
 }
 
 .checkinfo{
-    width: 500px;
-    height: 60px;
+    margin-top: 50px;
+    width: 1500px;
+    height: 150px;
+    margin-left: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    
 }
-
+.wrapcheck{
+width: 100%;
+height: 33%;
+display: flex;
+}
+.wraploading{
+    padding-left: 15px;
+}
 .checktime{
     font-size: 23px;
     font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20;
 }

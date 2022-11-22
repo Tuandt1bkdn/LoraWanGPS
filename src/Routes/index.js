@@ -12,10 +12,7 @@ import Information from "~/pages/Information";
 import { HeaderOnly } from "~/components/Layout";
 
 const publicRoutes = [
-  {
-    path: routesConfig.home,
-    component: Home,
-  },
+  { path: routesConfig.home, component: Home },
   { path: routesConfig.location, component: Location },
   { path: routesConfig.login, component: Login, layout: HeaderOnly },
   { path: routesConfig.warning, component: Warning },

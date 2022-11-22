@@ -1,5 +1,5 @@
 const routes = {
-  home: "/trang-chu",
+  home: "/home",
   location: "/dinh-vi",
   login: "/dang-nhap",
   warning: "/canh-bao",

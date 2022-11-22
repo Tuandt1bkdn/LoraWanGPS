@@ -41,7 +41,7 @@ function Information() {
     <div className={cx("info-tab1")}>
       <div className={cx("cl1")}>
         <img
-          src="https://photocross.net/wp-content/uploads/2020/03/anh-chan-dung.jpg"
+          src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png?w=360"
           className={cx("avatar")}
           alt="Nguyen Anh Tuan"
         />

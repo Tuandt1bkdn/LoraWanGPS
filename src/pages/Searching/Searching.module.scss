@@ -1,4 +1,7 @@
-.typeon{
+.wrapper{
+    margin: 100px 0 0 200px;
+}
+.type{
     width: 350px;
     height: 56px;
     display: flex;
@@ -6,9 +9,10 @@
     align-items: center;
 }
 
-.typeunder{
+.type{
     width: 350px;
     height: 56px;
+    margin-left: 100px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -45,7 +49,7 @@
 .search-input{
     width: 270px;
     height: 44px;
-    background-color: white;
+    //background-color: red;
     color: rgb(60,64,67);
     padding: 20px 0 20px 0;
     border-radius: 5px;

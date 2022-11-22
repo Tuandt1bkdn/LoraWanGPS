@@ -8,8 +8,8 @@ const cx = classNames.bind(styles);
 
 function Searching() {
   return (
-    <div>
-      <div className={cx("typeon")}>
+    <div className={cx("wrapper")}>
+      <div className={cx("type")}>
         <div className={cx("icon1")}></div>
         <input
           type="text"
@@ -17,7 +17,7 @@ function Searching() {
           placeholder="Nhập địa điểm bắt đầu"
         />
       </div>
-      <div className={cx("typeunder")}>
+      <div className={cx("type")}>
         <div className={cx("icon2")}></div>
         <input
           type="text"

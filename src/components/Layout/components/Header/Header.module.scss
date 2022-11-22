@@ -1,10 +1,11 @@
 .wrapper { 
     width: 100%;
     height: var(--default-layout-header-height);
-    background-color:rgb(194, 221, 119);
+    background-color: #dcf3b5;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    position: fixed;   
 }
 .inner {
     height : 100% ;
@@ -46,11 +47,14 @@
     background-color: transparent;
     font-size: 20px;
 }
-
+.avatar_wrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .avatar{
     width: 35px;
     height: 35px;
     object-fit: cover;
     cursor: pointer;
-    
-   }
+}
