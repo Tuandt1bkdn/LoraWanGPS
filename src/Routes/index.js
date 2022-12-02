@@ -2,6 +2,7 @@ import routesConfig from "../config/routes";
 
 // import { HeaderOnly } from "../components/Layout";
 import Home from "../pages/Home";
+import Manage from "~/pages/Manage";
 import Location from "../pages/Location";
 import Login from "../pages/Login";
 import Warning from "../pages/Warning";
@@ -20,6 +21,7 @@ const publicRoutes = [
   { path: routesConfig.history, component: History },
   { path: routesConfig.setting, component: Setting },
   { path: routesConfig.information, component: Information },
+  { path: routesConfig.manage, component: Manage },
 ];
 
 const privatecRoutes = [];

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
@@ -10,6 +11,7 @@ function MenuItem({ title, to, icon }) {
     <NavLink
       className={(nav) => cx("menu-item", { active: nav.isActive })}
       to={to}>
+      <FontAwesomeIcon icon={icon} />
       <span className={cx("title")}>{title} </span>
     </NavLink>
   );

@@ -1,58 +1,62 @@
-.wrapper { 
+.wrapper {
     width: 100%;
-    height: var(--default-layout-header-height);
-    background-color: #dcf3b5;
+    height: 7vh;
+    background-color: white;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
-    justify-content: center;
-    position: fixed;   
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
 }
+
 .inner {
-    height : 100% ;
-    width : var(--default-layout-width);
-    
+    height: 100%;
+    width: 500px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
 }
 
-.title{
+.title {
     padding-top: 10px;
-    color: rgb(235, 95, 95)  ;
+    color: rgb(235, 95, 95);
     font: bold;
     font-size: 40px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 
-.location{
+.location {
     display: flex;
     align-items: center;
 }
 
-.image{
+.image {
     width: 100px;
-    height: 50px; 
+    height: 50px;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU9SJKyjsEW7f-yeSOkP5OS04StbcVweBbDw&usqp=CAU);
     background-size: 100px;
 }
-.action{
+
+.action {
     display: flex;
     align-items: center;
 }
 
-.signout-btn{
+.signout-btn {
     background-color: transparent;
     font-size: 20px;
 }
-.avatar_wrapper{
+
+.avatar_wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.avatar{
+
+.avatar {
     width: 35px;
     height: 35px;
     object-fit: cover;

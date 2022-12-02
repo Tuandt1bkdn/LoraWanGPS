@@ -1,7 +1,8 @@
 const routes = {
+  login: "/",
   home: "/home",
+  manage: "/manage",
   location: "/dinh-vi",
-  login: "/dang-nhap",
   warning: "/canh-bao",
   searching: "/do-duong",
   setting: "/kiem-tra",

@@ -35,7 +35,7 @@ const AVATAR_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faSignOut} />,
     title: "Đăng xuất",
-    to: "/dang-nhap",
+    to: "/",
   },
 ];
 
@@ -48,7 +48,9 @@ function Header() {
           <div className={cx("image")} />
         </span>
         <Sidebar />
-        <div className={cx("action")}>
+      </div>
+      <div className={cx("action")}>
+        <div className={cx("rightHeader")}>
           {currentUser ? (
             <Avatar items={AVATAR_ITEMS}>
               <div className={cx("avatar_wrapper")}>

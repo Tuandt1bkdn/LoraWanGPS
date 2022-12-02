@@ -1,51 +1,133 @@
-.wrapper{
-    margin-left: 200px;
+.wrapper {
+    display: flex;
+    height: 1200px;
+    width: 100%;
+    flex: 10;
+    border-top: 1px solid rgb(104, 101, 101);
 }
 
-.checking-location{
-    margin-left: 100px;
-    border: 5px solid gray;
-    border-top-color: blue;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    animation-name: spin 1s linear infitite;
-    @keyframes spin {
-        0% { transform: rotate(0deg);}
-        100% {transform: rotate(360deg);}
-    }
-   
-}
-
-.map{
-    margin-top: 100px;
-    margin-left: 200px;
-    width: 1000px;
-    height: 600px;
-    background-color: red;
-}
-
-.checkinfo{
-    margin-top: 50px;
-    width: 1500px;
-    height: 150px;
-    margin-left: 100px;
+.leftContent {
+    //margin-left: 50px;
+    flex: 5.5;
+    border-right: 1px solid rgb(104, 101, 101);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    
+    justify-content: flex-start;
+    align-items: center
 }
-.wrapcheck{
-width: 100%;
-height: 33%;
-display: flex;
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 4.5;
+
+    .rightTop {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .image {
+            width: 500px;
+            height: 350px;
+            //margin-top: -100px;
+            background-image: url(https://cdn3.vectorstock.com/i/1000x1000/28/67/modern-car-white-color-white-background-ima-vector-20552867.jpg);
+            background-size: auto 400px;
+            background-repeat: no-repeat;
+        }
+
+        .wrapInfo {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+
+            .contentInfo {
+                height: 100%;
+                width: 90%;
+                //background-color: blue;
+                justify-content: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-style: italic;
+                border-bottom: 1px solid rgb(104, 101, 101);
+
+                .bienSoXe {
+                    height: 50px;
+                    width: 100%;
+                    background-color: white;
+                    font-size: 30px;
+                    font-weight: 600;
+                }
+
+                .viTri {
+                    height: 70px;
+                    width: 100%;
+                    background-color: white;
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+                .user{
+                    height: 60px;
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    .userImage{
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50px;
+                        background-image: url(https://i.pinimg.com/736x/0d/18/b7/0d18b7af57d7fdf390edafb21403cfa4.jpg);
+                        background-size: 60px auto;
+                        background-repeat: no-repeat;
+                    }
+                    .userInfo{
+                        height: 100%;
+                        width: 500px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .rightBottom {
+        width: 100%;
+        height: 400px;
+        // background-color: yellow;
+    }
 }
-.wraploading{
+
+.checkinfo {
+
+    margin-top: 50px;
+    width: 900px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.wrapcheck {
+    width: 100%;
+    height: 33%;
+    display: flex;
+}
+
+.wraploading {
     padding-left: 15px;
 }
-.checktime{
+
+.checktime {
     font-size: 23px;
     font-weight: 500;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 20;
 }
