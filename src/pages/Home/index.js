@@ -1,23 +1,20 @@
-//import DataTable from "react-data-table-component";
-//import { response } from "express";
 import React from "react";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
+import { userManage } from "~/api/services/getDataAPI";
+import LeftBody from "~/components/Layout/components/LeftBody";
 
 const cx = classNames.bind(styles);
 function Home() {
-  //const [data, setData] = useState([]);
+  //const [active, setActive] = useState("First State");
   const [data2, setData2] = useState([]);
-  //const [latLng, setLatLng] = useState([]);
-  //16.047079,108.206230:16.463713,107.590866
 
-  const LatLng = "16.073,108.590:16.047,107.306";
   useEffect(() => {
-    fetch(`http://localhost:5000/data2`)
+    fetch(`http://localhost:5000/usermanage`)
       .then((response) => response.json())
       .then((json) => {
-        setData2(json);
+        setData2(json[0]);
         //setLatLng(json.routes[0].summary);
       })
       .catch((e) => {
@@ -25,42 +22,37 @@ function Home() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://api.tomtom.com/routing/1/calculateRoute/${LatLng}/json?key=eJDSsxHTG1Bm9zZUpJtTJE7HiqIBQ2BQ`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       setData(json.routes[0].summary);
-  //       console.log(json.routes[0].summary);
-  //     })
-  //     .catch((e) => {
-  //       console.log("e", e);
-  //     });
-  // }, []);
   return (
     <div>
-      <div>b</div>
-
-      <table className={cx("test")}>
-        <thead>
-          <tr>
-            <th>CustomerId</th>
-            <th>Name</th>
-            <th>Country</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data2.map((item) => (
-            <tr>
-              <td>{item.realTime}</td>
-              <td>{item.lat}</td>
-              <td>{item.lng}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+      </div>
+      <div>
+        <LeftBody data={data2} />
+      </div>
     </div>
   );
 }
 export default Home;
+
+//const [data, setData] = useState([]);
+//const [latLng, setLatLng] = useState([]);
+//16.047079,108.206230:16.463713,107.590866
+
+//const LatLng = "16.073,108.590:16.047,107.306";
+
+// useEffect(() => {
+//   fetch(
+//     `https://api.tomtom.com/routing/1/calculateRoute/${LatLng}/json?key=eJDSsxHTG1Bm9zZUpJtTJE7HiqIBQ2BQ`
+//   )
+//     .then((response) => response.json())
+//     .then((json) => {
+//       setData(json.routes[0].summary);
+//       console.log(json.routes[0].summary);
+//     })
+//     .catch((e) => {
+//       console.log("e", e);
+//     });
+// }, []);

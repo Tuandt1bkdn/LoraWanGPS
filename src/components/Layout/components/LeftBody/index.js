@@ -1,8 +1,24 @@
 import classNames from "classnames/bind";
 import styles from "./LeftBody.module.scss";
+//import { userManage } from "~/api/services/getDataAPI";
+import { useState, useEffect } from "react";
 
 const cx = classNames.bind(styles);
-function LeftBody() {
+function LeftBody({ data, useractive }) {
+  // console.log("useractive:", useractive);
+  //const [data2, setData2] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/usermanage`)
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setData2(json[0]);
+  //       //setLatLng(json.routes[0].summary);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header")}>
@@ -13,7 +29,7 @@ function LeftBody() {
               <div className={cx("image")}></div>
               <div className={cx("info1")}>
                 <div className={cx("info2")}>
-                  <p className={cx("text")}>Họ và Tên : Nguyễn Văn Đức</p>
+                  <p className={cx("text")}>Họ và Tên : {data.name}</p>
                 </div>
                 <div className={cx("info2")}>
                   <p className={cx("text")}>Ngày sinh : 23/02/1983</p>
@@ -22,7 +38,7 @@ function LeftBody() {
                   <p className={cx("text")}>CCCD : 0439 0000 1912</p>
                 </div>
                 <div className={cx("info2")}>
-                  <p className={cx("text")}>Số điện thoại : 0951234753</p>
+                  <p className={cx("text")}>Số điện thoại : {data.phone}</p>
                 </div>
               </div>
             </div>
@@ -78,3 +94,7 @@ function LeftBody() {
 }
 
 export default LeftBody;
+
+// <div className={cx("header")}>
+
+// </div>

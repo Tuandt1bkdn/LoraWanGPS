@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classNames from "classnames/bind";
 import styles from "./Warning.module.scss";
 import { getDataNow } from "~/api/services/getDataAPI";
@@ -6,12 +6,36 @@ import { getDataNow } from "~/api/services/getDataAPI";
 import LineChart from "~/components/Layout/components/LineChart";
 //import {Chart as Chartjs }
 import LeftBody from "~/components/Layout/components/LeftBody";
+import { UserContext } from "~/components/Layout/DefaultLayout";
 
 const cx = classNames.bind(styles);
 
 function Warning() {
+  const userinfo = useContext(UserContext);
+  console.log("theme", userinfo);
+
+  //const [active, setActive] = useState("user1");
+  const [user1, setUser1] = useState([]);
+  const [user2, setUser2] = useState([]);
+  const [user3, setUser3] = useState([]);
+  const [user4, setUser4] = useState([]);
+  const [user5, setUser5] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/usermanage`)
+      .then((response) => response.json())
+      .then((json) => {
+        setUser1(json[0]);
+        setUser2(json[1]);
+        setUser3(json[2]);
+        setUser4(json[3]);
+        setUser5(json[4]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   const [data, setData] = useState({
-    labels: ["hien tai", "1 phut truoc", "2 phut truoc"],
+    labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
     datasets: [
       {
         label: "Temparature",
@@ -29,17 +53,15 @@ function Warning() {
     ],
   });
 
-  const [timenow, setTimenow] = useState([]);
-
   useEffect(() => {
     const arr = [];
-    fetch(`http://localhost:5000/data2`)
+    fetch(`http://localhost:5000/alldata`)
       .then((res) => res.json())
       .then((json) => {
         console.log("json", json);
         // eslint-disable-next-line array-callback-return
         json.map((item, index) => {
-          arr.push(item.lat);
+          arr.push(item.temp);
           console.log("arr", arr);
           setData({
             labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
@@ -63,23 +85,30 @@ function Warning() {
       });
   }, []);
   console.log("data", data);
+
+  const [datanow, setDatanow] = useState([]);
   useEffect(() => {
     getDataNow()
       .then((res) => {
-        setTimenow(res.data);
+        setDatanow(res.data);
         console.log(res.data);
       })
       .catch((e) => {
         console.log(e);
       });
-  }, [timenow]);
+  }, []);
+
   const temp = 5 > 3;
   const voltage = 3 > 4;
   const distance = 100 < 150;
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
-        <LeftBody />
+        {userinfo === "User1" && <LeftBody data={user1} />}
+        {userinfo === "User2" && <LeftBody data={user2} />}
+        {userinfo === "User3" && <LeftBody data={user3} />}
+        {userinfo === "User4" && <LeftBody data={user4} />}
+        {userinfo === "User5" && <LeftBody data={user5} />}
       </div>
       <div className={cx("rightContent")}>
         <div className={cx("rightTop")}>
@@ -96,7 +125,9 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  <p>123.456</p>
+                  {datanow.map((item) => (
+                    <p>{item.temp}</p>
+                  ))}
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>°C</p>
@@ -124,7 +155,9 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  <p>123.456</p>
+                  {datanow.map((item) => (
+                    <p>{item.voltage}</p>
+                  ))}
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>V</p>
@@ -152,7 +185,9 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  <p>123.456</p>
+                  {datanow.map((item) => (
+                    <p>{item.distance}</p>
+                  ))}
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>km</p>
@@ -169,7 +204,16 @@ function Warning() {
           </div>
         </div>
         <div className={cx("rightBottom")}>
-          <LineChart data={data} />
+          <div className={cx("chart")}>
+            <LineChart data={data} />
+          </div>
+          <div className={cx("choose")}>
+            <button className={cx("button")} /*onClick={handleChart()} */>
+              Nhiệt độ nước
+            </button>
+            <button className={cx("button")}>Điện áp Acquy</button>
+            <button className={cx("button")}>Vận tốc</button>
+          </div>
         </div>
       </div>
     </div>

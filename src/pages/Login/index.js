@@ -21,19 +21,28 @@ function Login() {
   console.log(login);
   const [user, setUser] = useState("");
   const [pass, setPassWord] = useState("");
+
   const handleSubmit = () => {
     const body = {
       username: user,
       passWord: pass,
     };
     console.log("body=", body);
-    const checkLogin = containsObject(body, login);
+    var checkLogin = containsObject(body, login);
+
     console.log("checkLogin =", checkLogin);
     if (checkLogin === true) {
-      navigate("/manage");
-      //export default checkLogin
-    } else alert("Nhap sai tai khoan hoac mat khau");
+      localStorage.setItem("isAuthenticated", "true");
+      console.log("isValidated", localStorage.getItem("isAuthenticated"));
+      alert("nhap dung");
+      navigate("quanly");
+      //localStorage.clear("isAuthenticated", "true");
+    } else {
+      console.log("Nhap sai roi");
+      alert("Nhap sai tai khoan hoac mat khau");
+    }
   };
+
   useEffect(() => {
     LoginManager()
       .then((res) => {

@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import config from "src/config";
+//import config from "src/config";
 import styles from "./Sidebar.module.scss";
 import Menu, { MenuItem } from "./Menu";
 import {
@@ -14,17 +14,9 @@ function Sidebar() {
   return (
     <aside className={cx("wrapper")}>
       <Menu className={cx("menu")}>
-        <MenuItem title="TRANG CHỦ" to={config.routes.home} icon={faHome} />
-        <MenuItem
-          title="ĐỊNH VỊ"
-          to={config.routes.location}
-          icon={faLocationDot}
-        />
-        <MenuItem
-          title="THÔNG SỐ"
-          to={config.routes.warning}
-          icon={faChartBar}
-        />
+        <MenuItem title="TRANG CHỦ" to="/trangchu" icon={faHome} />
+        <MenuItem title="ĐỊNH VỊ" to="/dinhvi" icon={faLocationDot} />
+        <MenuItem title="THÔNG SỐ" to="/thongso" icon={faChartBar} />
       </Menu>
     </aside>
   );

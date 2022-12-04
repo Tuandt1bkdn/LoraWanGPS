@@ -5,7 +5,7 @@ export function getFullData() {
 }
 
 export function getDataNow() {
-  return http.get("/data2");
+  return http.get("/datanow");
 }
 
 export function getDataTable() {
@@ -13,4 +13,8 @@ export function getDataTable() {
 }
 export function LoginManager() {
   return http.get("/login");
+}
+
+export function userManage() {
+  return http.get("/usermanage");
 }

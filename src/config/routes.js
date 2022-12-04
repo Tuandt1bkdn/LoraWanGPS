@@ -1,13 +1,14 @@
 const routes = {
   login: "/",
-  home: "/home",
-  manage: "/manage",
-  location: "/dinh-vi",
-  warning: "/canh-bao",
-  searching: "/do-duong",
-  setting: "/kiem-tra",
-  history: "/lich-su",
-  information: "/thong-tin",
+  home: "/trangchu",
+  manage: "/quanly",
+  location: "/dinhvi",
+  warning: "/canhbao",
+  searching: "/doduong",
+  setting: "/kiemtra",
+  history: "/lichsu",
+  information: "/thongtin",
+  dashboard: "/thongso",
 };
 
 export default routes;
