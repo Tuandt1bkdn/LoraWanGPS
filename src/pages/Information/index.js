@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Infomation.module.scss";
+
 // import { db } from "~/firebase";
 // import { uid } from "uid";
 // import { useState, useEffect } from "react";

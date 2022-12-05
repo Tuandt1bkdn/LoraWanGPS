@@ -2,36 +2,32 @@ import React from "react";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
+
 import { userManage } from "~/api/services/getDataAPI";
 import LeftBody from "~/components/Layout/components/LeftBody";
 
 const cx = classNames.bind(styles);
+
 function Home() {
   //const [active, setActive] = useState("First State");
   const [data2, setData2] = useState([]);
 
+  console.log("data2", data2);
   useEffect(() => {
     fetch(`http://localhost:5000/usermanage`)
       .then((response) => response.json())
       .then((json) => {
-        setData2(json[0]);
-        //setLatLng(json.routes[0].summary);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+        setTimeout(() => setData2(json[0]), 1000);
+      }, []);
+  }, [data2]);
 
   return (
     <div>
       <div>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+        <input type="text"></input>
+        <button>Chat</button>
       </div>
-      <div>
-        <LeftBody data={data2} />
-      </div>
+      <div>{data2.name}</div>
     </div>
   );
 }

@@ -3,33 +3,33 @@ import styles from "./Location.module.scss";
 import { useState, useEffect } from "react";
 import Map from "~/components/Layout/components/Map";
 //import LoadingIcon from "~/components/Layout/components/LoadingIcon";
+//import { getDataNow } from "~/api/services/getDataAPI";
 import axios from "axios";
-import { data } from "autoprefixer";
 const cx = classNames.bind(styles);
 
 function Location() {
-  const [data1, setData1] = useState([]);
   const [lngLatNow, getLngLatNow] = useState("");
   const [realTime, getRealTime] = useState("");
-
-  const url1 = "http://localhost:5000/data2";
+  const [date, getDate] = useState("");
+  const url1 = "http://localhost:5000/datanow";
   useEffect(() => {
     fetch(url1)
       .then((response) => response.json())
       .then((json) => {
-        setData1(json);
         const lng = json[0].lng.toString(10);
         const lat = json[0].lat.toString(10);
-        const time = json[0].time;
-        console.log(lng + "," + lat);
+        const time = json[0];
+        //console.log(lng + "," + lat);
         getLngLatNow(lng + "," + lat);
         getRealTime(time);
+        getDate(json[0].convertedDate);
       })
       .catch((e) => {
         console.log("e", e);
       });
   }, []);
   console.log(lngLatNow);
+  console.log("date", date);
   const [data2, setData2] = useState([]);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ function Location() {
               <div className={cx("bienSoXe")}>43B-678.11</div>
               <div className={cx("viTri")}>
                 <p>{data2}</p>
-                <p>{realTime}</p>
+                <p>{date.substring(0, 10)}</p>
               </div>
               <div className={cx("user")}>
                 <div className={cx("userImage")}></div>
@@ -72,10 +72,25 @@ function Location() {
             </div>
           </div>
         </div>
-        <div className={cx("rightBottom")}></div>
+        <div className={cx("rightBottom")}>
+          <div className={cx("table")}></div>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Location;
+
+// <table className={cx("tableform")}>
+//               <thead>
+//                 <th>1</th>
+//                 <th>1</th>
+//                 <th>1</th>
+//               </thead>
+//               <tbody>
+//                 <td>1</td>
+//                 <td>1</td>
+//                 <td>1</td>
+//               </tbody>
+//             </table>

@@ -16,7 +16,6 @@ import Information from "~/pages/Information";
 function App() {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   console.log("state=", isAuthenticated);
-
   return (
     <Router>
       <div className="App">

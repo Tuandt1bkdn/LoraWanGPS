@@ -14,7 +14,6 @@ function Warning() {
   const userinfo = useContext(UserContext);
   console.log("theme", userinfo);
 
-  //const [active, setActive] = useState("user1");
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([]);
   const [user3, setUser3] = useState([]);
@@ -59,48 +58,59 @@ function Warning() {
       .then((res) => res.json())
       .then((json) => {
         console.log("json", json);
+
         // eslint-disable-next-line array-callback-return
         json.map((item, index) => {
           arr.push(item.temp);
           console.log("arr", arr);
-          setData({
-            labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
-            datasets: [
-              {
-                label: "Temparature",
-                data: arr,
-                backgroundColor: [
-                  "rgba(75,192,192,1)",
-                  "#ecf0f1",
-                  "#50AF95",
-                  "#f3ba2f",
-                  "#2a71d0",
-                ],
-                borderColor: "black",
-                borderWidth: 2,
-              },
-            ],
-          });
+          setTimeout(() => {
+            setData({
+              labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
+              datasets: [
+                {
+                  label: "Temparature",
+                  data: arr,
+                  backgroundColor: [
+                    "rgba(75,192,192,1)",
+                    "#ecf0f1",
+                    "#50AF95",
+                    "#f3ba2f",
+                    "#2a71d0",
+                  ],
+                  borderColor: "black",
+                  borderWidth: 2,
+                },
+              ],
+            });
+          }, 2500);
         });
       });
-  }, []);
+  }, [data]);
   console.log("data", data);
 
-  const [datanow, setDatanow] = useState([]);
+  const [datanow, setDatanow] = useState({
+    temp: "",
+    voltage: "",
+    distance: "",
+  });
   useEffect(() => {
     getDataNow()
       .then((res) => {
-        setDatanow(res.data);
-        console.log(res.data);
+        setDatanow({
+          temp: res.data[0].temp,
+          voltage: res.data[0].voltage,
+          distance: res.data[0].distance,
+        });
+        console.log("ABCD", res.data[0]);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
 
-  const temp = 5 > 3;
-  const voltage = 3 > 4;
-  const distance = 100 < 150;
+  const temp = datanow.temp < 30;
+  const voltage = datanow.voltage > 220;
+  const distance = datanow.distance < 30;
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
@@ -125,9 +135,7 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  {datanow.map((item) => (
-                    <p>{item.temp}</p>
-                  ))}
+                  <p>{datanow.temp}</p>
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>°C</p>
@@ -155,9 +163,7 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  {datanow.map((item) => (
-                    <p>{item.voltage}</p>
-                  ))}
+                  <p>{datanow.voltage}</p>
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>V</p>
@@ -185,9 +191,7 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  {datanow.map((item) => (
-                    <p>{item.distance}</p>
-                  ))}
+                  <p>{datanow.distance}</p>
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>km</p>

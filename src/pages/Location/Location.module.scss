@@ -100,7 +100,20 @@
     .rightBottom {
         width: 100%;
         height: 400px;
-        // background-color: yellow;
+        display: flex;
+        justify-content: center;
+        .table{
+            margin-top: 50px;
+            width: 80%;
+            height: 600px;
+            //background-color: red;
+            display: flex;
+            justify-content: center;
+            .tableform{
+                width: 100% ;
+                background-color: blue;
+            }
+        }
     }
 }
 
