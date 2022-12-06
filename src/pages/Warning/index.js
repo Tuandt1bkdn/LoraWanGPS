@@ -86,7 +86,7 @@ function Warning() {
         });
       });
   }, [data]);
-  console.log("data", data);
+  //console.log("data", data);
 
   const [datanow, setDatanow] = useState({
     temp: "",
@@ -96,21 +96,23 @@ function Warning() {
   useEffect(() => {
     getDataNow()
       .then((res) => {
-        setDatanow({
-          temp: res.data[0].temp,
-          voltage: res.data[0].voltage,
-          distance: res.data[0].distance,
-        });
-        console.log("ABCD", res.data[0]);
+        setTimeout(() => {
+          setDatanow({
+            temp: res.data[0].temp,
+            voltage: res.data[0].voltage,
+            distance: res.data[0].distance,
+          });
+        }, 1000);
+        //console.log("ABCD", res.data[0]);
       })
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [datanow]);
 
   const temp = datanow.temp < 30;
   const voltage = datanow.voltage > 220;
-  const distance = datanow.distance < 30;
+  const distance = datanow.distance < 15;
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>

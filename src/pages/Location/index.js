@@ -1,15 +1,15 @@
 import classNames from "classnames/bind";
 import styles from "./Location.module.scss";
 import { useState, useEffect } from "react";
-import Map from "~/components/Layout/components/Map";
-//import LoadingIcon from "~/components/Layout/components/LoadingIcon";
+
 //import { getDataNow } from "~/api/services/getDataAPI";
 import axios from "axios";
+import MapLibre from "~/components/Layout/components/Map";
 const cx = classNames.bind(styles);
 
 function Location() {
   const [lngLatNow, getLngLatNow] = useState("");
-  const [realTime, getRealTime] = useState("");
+  //const [realTime, getRealTime] = useState("");
   const [date, getDate] = useState("");
   const url1 = "http://localhost:5000/datanow";
   useEffect(() => {
@@ -18,10 +18,10 @@ function Location() {
       .then((json) => {
         const lng = json[0].lng.toString(10);
         const lat = json[0].lat.toString(10);
-        const time = json[0];
+        //const time = json[0];
         //console.log(lng + "," + lat);
         getLngLatNow(lng + "," + lat);
-        getRealTime(time);
+        //getRealTime(time);
         getDate(json[0].convertedDate);
       })
       .catch((e) => {
@@ -50,7 +50,7 @@ function Location() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
-        <Map></Map>
+        <MapLibre />
       </div>
       <div className={cx("rightContent")}>
         <div className={cx("rightTop")}>

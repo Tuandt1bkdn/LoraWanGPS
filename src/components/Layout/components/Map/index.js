@@ -1,32 +1,34 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import maplibreGl from "maplibre-gl";
 import classNames from "classnames/bind";
 import styles from "./Map.module.scss";
+import { Map, Marker } from "react-map-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const cx = classNames.bind(styles);
 
-function Map() {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  const [lng] = useState(108.20623);
-  const [lat] = useState(16.047079);
-  const [zoom] = useState(14);
-  const [API_KEY] = useState("jCgKzqnyf5RobipHaRTj");
-  useEffect(() => {
-    if (map.current) return;
-    map.current = new maplibreGl.Map({
-      container: mapContainer.current,
-      // eslint-disable-next-line no-template-curly-in-string
-      style: `https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`,
-      center: [lng, lat],
-      zoom: zoom,
-    });
-  });
+function MapLibre() {
+  const lng = 108.1572348419274;
+  const lat = 16.067629934763744;
+  const zoom = 13;
+
   return (
     <div className={cx("map-wrap")}>
-      <div ref={mapContainer} className={cx("map")} />
+      <Map
+        mapLib={maplibreGl}
+        initialViewState={{
+          longitude: lng,
+          latitude: lat,
+          zoom: zoom,
+        }}
+        style={{ width: "100%", height: "100%" }}
+        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=jCgKzqnyf5RobipHaRTj">
+        <Marker longitude={lng} latitude={lat} color="red" />
+      </Map>
     </div>
   );
 }
 
-export default Map;
+export default MapLibre;
+
+// `https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`,

@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
 
-import { userManage } from "~/api/services/getDataAPI";
-import LeftBody from "~/components/Layout/components/LeftBody";
+import MapLibre from "~/components/Layout/components/Map";
 
 const cx = classNames.bind(styles);
 
@@ -22,12 +21,8 @@ function Home() {
   }, [data2]);
 
   return (
-    <div>
-      <div>
-        <input type="text"></input>
-        <button>Chat</button>
-      </div>
-      <div>{data2.name}</div>
+    <div className={cx("wrapper")}>
+      <MapLibre />
     </div>
   );
 }
