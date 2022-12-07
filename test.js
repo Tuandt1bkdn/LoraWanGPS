@@ -29,7 +29,6 @@
 // //     userName: "tuan123",
 // //     passWord: "duchuy23",
 // //   },
-const temp = 5 > 3;
-const voltage = 3 > 4;
-const distance = 100 < 150;
-console.log(temp, "", voltage, "", distance);
+const a = new Date();
+const b = a + 0;
+console.log("a = ", a, typeof a, "b = ", b, typeof b);

@@ -60,7 +60,7 @@ function Location() {
               <div className={cx("bienSoXe")}>43B-678.11</div>
               <div className={cx("viTri")}>
                 <p>{data2}</p>
-                <p>{date.substring(0, 10)}</p>
+                <p>{date}</p>
               </div>
               <div className={cx("user")}>
                 <div className={cx("userImage")}></div>

@@ -2,9 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import classNames from "classnames/bind";
 import styles from "./Warning.module.scss";
 import { getDataNow } from "~/api/services/getDataAPI";
-//import { ParaData } from "~/firebase/Data";
 import LineChart from "~/components/Layout/components/LineChart";
-//import {Chart as Chartjs }
 import LeftBody from "~/components/Layout/components/LeftBody";
 import { UserContext } from "~/components/Layout/DefaultLayout";
 
@@ -12,13 +10,13 @@ const cx = classNames.bind(styles);
 
 function Warning() {
   const userinfo = useContext(UserContext);
-  console.log("theme", userinfo);
 
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([]);
   const [user3, setUser3] = useState([]);
   const [user4, setUser4] = useState([]);
   const [user5, setUser5] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:5000/usermanage`)
       .then((response) => response.json())
@@ -34,11 +32,11 @@ function Warning() {
       });
   }, []);
   const [data, setData] = useState({
-    labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
+    labels: ["", "", "", "", ""],
     datasets: [
       {
         label: "Temparature",
-        data: [10, 45, 32],
+        data: [23, 25, 32, 29, 27],
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -53,23 +51,30 @@ function Warning() {
   });
 
   useEffect(() => {
-    const arr = [];
-    fetch(`http://localhost:5000/alldata`)
+    const timelabel = [];
+    const temp = [];
+    const voltage = [];
+    const distance = [];
+    //const datachart = [];
+    fetch(`http://localhost:5000/datanow`)
       .then((res) => res.json())
       .then((json) => {
         console.log("json", json);
 
         // eslint-disable-next-line array-callback-return
         json.map((item, index) => {
-          arr.push(item.temp);
-          console.log("arr", arr);
+          temp.push(item.temp);
+          voltage.push(item.voltage);
+          distance.push(item.distance);
+          timelabel.push(item.realtimelocal.substring(0, 8));
+
           setTimeout(() => {
             setData({
-              labels: [" 2phut truoc", "1 phut truoc", "hien tai"],
+              labels: timelabel.reverse(),
               datasets: [
                 {
                   label: "Temparature",
-                  data: arr,
+                  data: temp,
                   backgroundColor: [
                     "rgba(75,192,192,1)",
                     "#ecf0f1",
@@ -82,11 +87,10 @@ function Warning() {
                 },
               ],
             });
-          }, 2500);
+          }, 3000);
         });
       });
   }, [data]);
-  //console.log("data", data);
 
   const [datanow, setDatanow] = useState({
     temp: "",
@@ -103,7 +107,6 @@ function Warning() {
             distance: res.data[0].distance,
           });
         }, 1000);
-        //console.log("ABCD", res.data[0]);
       })
       .catch((e) => {
         console.log(e);
