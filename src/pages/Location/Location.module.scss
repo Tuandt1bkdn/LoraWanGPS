@@ -5,7 +5,44 @@
     flex: 10;
     border-top: 1px solid rgb(104, 101, 101);
 }
-
+.info{
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    width: 500px;
+    height: 70%;
+    background-color: white;
+}
+.thongso{
+    position: fixed;
+    background-color: white;
+    top: 120px;
+    right: 50px;
+    width: 500px;
+    height: 90px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .thongsoitem{
+        width: 25%;
+        height: 60%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        //background-color: red;
+        .thongsoitemcontent{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .thongso-item-text{
+            font-size: 20px;
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+}
 .leftContent {
     //margin-left: 50px;
     //margin-top: 40px;

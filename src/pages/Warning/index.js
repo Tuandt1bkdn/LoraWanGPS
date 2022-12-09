@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import classNames from "classnames/bind";
 import styles from "./Warning.module.scss";
-import { getDataNow } from "~/api/services/getDataAPI";
+import { DriverManage, getDataNow } from "~/api/services/getDataAPI";
 import LineChart from "~/components/Layout/components/LineChart";
 import LeftBody from "~/components/Layout/components/LeftBody";
 import { UserContext } from "~/components/Layout/DefaultLayout";
@@ -18,14 +18,13 @@ function Warning() {
   const [user5, setUser5] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/usermanage`)
-      .then((response) => response.json())
-      .then((json) => {
-        setUser1(json[0]);
-        setUser2(json[1]);
-        setUser3(json[2]);
-        setUser4(json[3]);
-        setUser5(json[4]);
+    DriverManage()
+      .then((res) => {
+        setUser1(res.data[0]);
+        setUser2(res.data[1]);
+        setUser3(res.data[2]);
+        setUser4(res.data[3]);
+        setUser5(res.data[4]);
       })
       .catch((e) => {
         console.log(e);
@@ -56,40 +55,36 @@ function Warning() {
     const voltage = [];
     const distance = [];
     //const datachart = [];
-    fetch(`http://localhost:5000/datanow`)
-      .then((res) => res.json())
-      .then((json) => {
-        console.log("json", json);
-
-        // eslint-disable-next-line array-callback-return
-        json.map((item, index) => {
-          temp.push(item.temp);
-          voltage.push(item.voltage);
-          distance.push(item.distance);
-          timelabel.push(item.realtimelocal.substring(0, 8));
-
-          setTimeout(() => {
-            setData({
-              labels: timelabel.reverse(),
-              datasets: [
-                {
-                  label: "Temparature",
-                  data: temp,
-                  backgroundColor: [
-                    "rgba(75,192,192,1)",
-                    "#ecf0f1",
-                    "#50AF95",
-                    "#f3ba2f",
-                    "#2a71d0",
-                  ],
-                  borderColor: "black",
-                  borderWidth: 2,
-                },
-              ],
-            });
-          }, 3000);
-        });
+    getDataNow().then((res) => {
+      const json = res.data;
+      // eslint-disable-next-line array-callback-return
+      json.map((item, index) => {
+        temp.push(item.temp);
+        voltage.push(item.voltage);
+        distance.push(item.distance);
+        timelabel.push(item.realtimelocal.substring(0, 8));
+        setTimeout(() => {
+          setData({
+            labels: timelabel.reverse(),
+            datasets: [
+              {
+                label: "Temparature",
+                data: temp.reverse(),
+                backgroundColor: [
+                  "rgba(75,192,192,1)",
+                  "#ecf0f1",
+                  "#50AF95",
+                  "#f3ba2f",
+                  "#2a71d0",
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+              },
+            ],
+          });
+        }, 3000);
       });
+    });
   }, [data]);
 
   const [datanow, setDatanow] = useState({

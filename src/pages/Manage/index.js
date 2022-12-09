@@ -4,21 +4,20 @@ import styles from "./Manage.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { DriverManage } from "~/api/services/getDataAPI";
 const cx = classNames.bind(styles);
 
 function Manage() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/usermanage`)
-      .then((response) => response.json())
-      .then((json) => {
-        setData(json);
-        console.log(json);
+    DriverManage()
+      .then((res) => {
+        setData(res.data);
       })
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [data]);
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -91,14 +90,14 @@ function Manage() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, id) => (
+              {data.map((item, index) => (
                 <tr>
                   <td className={cx("nameTB2")}>{item.name}</td>
                   <td className={cx("nameTB2")}>{item.phone}</td>
-                  <td className={cx("nameTB2")}>{item.nameOfCar}</td>
-                  <td className={cx("nameTB2")}>{item.bienso}</td>
-                  <td className={cx("nameTB2")}>{item.dateRent}</td>
-                  <td className={cx("nameTB2")}>{item.typeRent}</td>
+                  <td className={cx("nameTB2")}>{item.car}</td>
+                  <td className={cx("nameTB2")}>{item.platenumber}</td>
+                  <td className={cx("nameTB2")}>{item.rentdate}</td>
+                  <td className={cx("nameTB2")}>{item.renttype}</td>
                   <td className={cx("nameTB2")}>{item.state}</td>
                   <td className={cx("nameTB2")}>
                     <button onClick={routeChange}>Kiem tra</button>

@@ -15,6 +15,6 @@ export function LoginManager() {
   return http.get("/login");
 }
 
-export function userManage() {
+export function DriverManage() {
   return http.get("/usermanage");
 }

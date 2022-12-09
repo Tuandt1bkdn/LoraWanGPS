@@ -14,7 +14,7 @@ import Setting from "~/pages/Setting";
 import Information from "~/pages/Information";
 
 function App() {
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const isAuthenticated = true;
   console.log("state=", isAuthenticated);
   return (
     <Router>
