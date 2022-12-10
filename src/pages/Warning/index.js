@@ -114,11 +114,11 @@ function Warning() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
-        {userinfo === "User1" && <LeftBody data={user1} />}
-        {userinfo === "User2" && <LeftBody data={user2} />}
-        {userinfo === "User3" && <LeftBody data={user3} />}
-        {userinfo === "User4" && <LeftBody data={user4} />}
-        {userinfo === "User5" && <LeftBody data={user5} />}
+        {userinfo === 1 && <LeftBody data={user1} />}
+        {userinfo === 2 && <LeftBody data={user2} />}
+        {userinfo === 3 && <LeftBody data={user3} />}
+        {userinfo === 4 && <LeftBody data={user4} />}
+        {userinfo === 5 && <LeftBody data={user5} />}
       </div>
       <div className={cx("rightContent")}>
         <div className={cx("rightTop")}>

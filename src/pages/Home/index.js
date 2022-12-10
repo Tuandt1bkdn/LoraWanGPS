@@ -2,27 +2,32 @@ import React from "react";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
-
-import MapLibre from "~/components/Layout/components/Map";
+import InforOnMap from "~/components/Layout/components/InforOnMap";
+import { useContext } from "react";
+import { UserContext } from "~/components/Layout/DefaultLayout";
 
 const cx = classNames.bind(styles);
 
 function Home() {
   //const [active, setActive] = useState("First State");
+  const userinfo = useContext(UserContext);
   const [data2, setData2] = useState([]);
-
+  //const [user, setUser] = useState();
   console.log("data2", data2);
   useEffect(() => {
     fetch(`http://localhost:5000/usermanage`)
       .then((response) => response.json())
       .then((json) => {
-        setTimeout(() => setData2(json[0]), 1000);
+        const filterUser = json.filter((item) => {
+          return item.iddriver === userinfo;
+        });
+        setTimeout(() => setData2(filterUser[0]), 1000);
       }, []);
-  }, [data2]);
-
+  }, [userinfo]);
+  console.log("data2 : ", data2);
   return (
     <div className={cx("wrapper")}>
-      <MapLibre />
+      <InforOnMap data={data2} number={1} />
     </div>
   );
 }

@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
   const currentUser = true;
-  const [userinfo, setUserInfo] = useState("User1");
+  const [userinfo, setUserInfo] = useState(1);
   console.log("userinfo", userinfo);
   return (
     <UserContext.Provider value={userinfo}>
@@ -28,29 +28,19 @@ function DefaultLayout({ children }) {
             <div className={cx("rightHeader")}>
               {currentUser ? (
                 <div className={cx("avatar_wrapper")}>
-                  <div
-                    className={cx("button")}
-                    onClick={() => setUserInfo("User1")}>
+                  <div className={cx("button")} onClick={() => setUserInfo(1)}>
                     Tài xế 1
                   </div>
-                  <div
-                    className={cx("button")}
-                    onClick={() => setUserInfo("User2")}>
+                  <div className={cx("button")} onClick={() => setUserInfo(2)}>
                     Tài xế 2
                   </div>
-                  <div
-                    className={cx("button")}
-                    onClick={() => setUserInfo("User3")}>
+                  <div className={cx("button")} onClick={() => setUserInfo(3)}>
                     Tài xế 3
                   </div>
-                  <div
-                    className={cx("button")}
-                    onClick={() => setUserInfo("User4")}>
+                  <div className={cx("button")} onClick={() => setUserInfo(4)}>
                     Tài xế 4
                   </div>
-                  <div
-                    className={cx("button")}
-                    onClick={() => setUserInfo("User5")}>
+                  <div className={cx("button")} onClick={() => setUserInfo(5)}>
                     Tài xế 5
                   </div>
                 </div>
