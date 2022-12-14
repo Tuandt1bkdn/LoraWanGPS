@@ -1,36 +1,32 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import { useState, useEffect } from 'react';
-
-
+import React from "react";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import { useState, useEffect } from "react";
 
 const columns = [
-  { id: 'name', label: 'Thời gian', minWidth: 170 },
-  { id: 'code', label: 'Nhiệt độ', minWidth: 100 },
+  { id: "name", label: "Thời gian", minWidth: 170 },
+  { id: "code", label: "Nhiệt độ", minWidth: 100 },
   {
-    id: 'population',
-    label: 'Điện áp Acquy',
+    id: "population",
+    label: "Điện áp Acquy",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'size',
-    label: 'Khoảng cách\u00a0(km\u00b2)',
+    id: "size",
+    label: "Khoảng cách\u00a0(km\u00b2)",
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
-
-
 
 export default function History() {
   const [data, setData] = useState([]);
@@ -47,6 +43,7 @@ export default function History() {
         console.log("e", e);
       });
   }, []);
+  console.log(data);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -60,20 +57,18 @@ export default function History() {
   };
 
   function createData(name, code, population, size) {
-    
-    return { name, code, population, size};
+    return { name, code, population, size };
   }
-  
-  
+
   const rows = [
-    createData('test' , 'IN', 21, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    createData('Italy', 'IT', 60483973, 301340),
-    createData('United States', 'US', 327167434, 9833520),
-    createData('Canada', 'CA', 37602103, 9984670),
-    createData('Australia', 'AU', 25475400, 7692024),
-    createData('Germany', 'DE', 83019200, 357578),
-    createData('Ireland', 'IE', 4857000, 70273),
+    createData("test", "IN", 21, 3287263),
+    createData("China", "CN", 1403500365, 9596961),
+    createData("Italy", "IT", 60483973, 301340),
+    createData("United States", "US", 327167434, 9833520),
+    createData("Canada", "CA", 37602103, 9984670),
+    createData("Australia", "AU", 25475400, 7692024),
+    createData("Germany", "DE", 83019200, 357578),
+    createData("Ireland", "IE", 4857000, 70273),
     // createData('Mexico', 'MX', 126577691, 1972550),
     // createData('Japan', 'JP', 126317000, 377973),
     // createData('France', 'FR', 67022000, 640679),
@@ -84,7 +79,7 @@ export default function History() {
   ];
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper sx={{ width: "100%" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -101,8 +96,7 @@ export default function History() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
-                >
+                  style={{ top: 57, minWidth: column.minWidth }}>
                   {column.label}
                 </TableCell>
               ))}
@@ -118,7 +112,7 @@ export default function History() {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
+                          {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
                         </TableCell>

@@ -17,7 +17,7 @@ function Manage() {
       .catch((e) => {
         console.log(e);
       });
-  }, [data]);
+  }, []);
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -91,7 +91,7 @@ function Manage() {
             </thead>
             <tbody>
               {data.map((item, index) => (
-                <tr>
+                <tr key={item.name}>
                   <td className={cx("nameTB2")}>{item.name}</td>
                   <td className={cx("nameTB2")}>{item.phone}</td>
                   <td className={cx("nameTB2")}>{item.car}</td>
@@ -123,18 +123,6 @@ export default Manage;
 //   <td className={cx("typeRent2")}>Loại hình thuê</td>
 //   <td className={cx("stateTB2")}>Trạng thái</td>
 
-// </tr>
-// <tr>
-//   <td className={cx("nameTB2")}>Soos</td>
-//   <td className={cx("phoneTB2")}>Số điện thoại</td>
-//   <td className={cx("typeTB2")}>Loại xe</td>
-//   <td className={cx("bienso2")}>Biển số</td>
-//   <td className={cx("timeRent2")}>Ngày bắt đầu thuê</td>
-//   <td className={cx("typeRent2")}>Loại hình thuê</td>
-//   <td className={cx("stateTB2")}>Trạng thái</td>
-//   <td className={cx("nameTB2")}>
-//     <button onClick={routeChange}>Kiem tra</button>
-//   </td>
 // </tr>
 // <tr>
 //   <td className={cx("nameTB2")}>Soos</td>

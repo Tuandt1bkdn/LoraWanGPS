@@ -26,7 +26,7 @@
         background-color:rgb(252, 249, 249);
         height: 80%;
         width: 25%;
-        border: 1px solid black;
+        border: 1px solid rgb(165, 161, 161);
         border-radius: 15px;
         display: flex;
         flex-direction: column;
@@ -38,7 +38,7 @@
             justify-content: space-between;
             width: 95%;
             height: 50px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid rgb(124, 120, 120);
         }
         .valueBox{
             width: 90%;
@@ -82,6 +82,9 @@
                 }
                 .safeNoti{
                     text-align: right;
+                    color: green;
+                    font-weight: 500;
+                    font-size: 18px;
                 }
             }
             

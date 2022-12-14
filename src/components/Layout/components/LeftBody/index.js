@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./LeftBody.module.scss";
 //import { userManage } from "~/api/services/getDataAPI";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 
 const cx = classNames.bind(styles);
 function LeftBody({ data, useractive }) {
@@ -22,7 +22,7 @@ function LeftBody({ data, useractive }) {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header")}>
-        <div className={cx("headerDrawer")}>THONG TIN CHUNG</div>
+        <div className={cx("headerDrawer")}>THÔNG TIN CHUNG</div>
         <div className={cx("content")}>
           <div className={cx("content1")}>
             <div className={cx("content1_1")}>
@@ -32,10 +32,10 @@ function LeftBody({ data, useractive }) {
                   <p className={cx("text")}>Họ và Tên : {data.name}</p>
                 </div>
                 <div className={cx("info2")}>
-                  <p className={cx("text")}>Ngày sinh : 23/02/1983</p>
+                  <p className={cx("text")}>Ngày sinh : {data.dob}</p>
                 </div>
                 <div className={cx("info2")}>
-                  <p className={cx("text")}>CCCD : 0439 0000 1912</p>
+                  <p className={cx("text")}>CCCD : {data.cccd}</p>
                 </div>
                 <div className={cx("info2")}>
                   <p className={cx("text")}>Số điện thoại : {data.phone}</p>
@@ -56,16 +56,16 @@ function LeftBody({ data, useractive }) {
           />
           <div className={cx("textBody")}>
             <div className={cx("text")}>
-              <p>Loại xe : Toyota</p>
+              <p>Loại xe : {data.car}</p>
             </div>
             <div className={cx("text")}>
-              <p>Số chỗ : 5</p>
+              <p>Số chỗ : {data.seat}</p>
             </div>
             <div className={cx("text")}>
-              <p>Biển số : 43B - 232.15</p>
+              <p>Biển số : {data.platenumber}</p>
             </div>
             <div className={cx("text")}>
-              <p>Ngày bắt đầu thuê: 13/04/2022</p>
+              <p>Ngày bắt đầu thuê: {data.rentdate}</p>
             </div>
           </div>
         </div>

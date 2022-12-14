@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,12 +8,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import styles from "./Location.module.scss";
-import MapLibre from "~/components/Layout/components/Map";
 import { DriverManage, getDataNow } from "~/api/services/getDataAPI";
 import InforOnMap from "~/components/Layout/components/InforOnMap";
 import { UserContext } from "~/components/Layout/DefaultLayout";
+import tt from "@tomtom-international/web-sdk-maps";
+import { services } from "@tomtom-international/web-sdk-services";
+import "@tomtom-international/web-sdk-maps/dist/maps.css";
 
 const cx = classNames.bind(styles);
+const API_KEY = "f7C29vC7ZGyd87eF6XnbmMaGVcIHAibM";
+const SAN_FRANCISCO = [108.20623, 16.047079];
 
 function Location() {
   const driverstate = useContext(UserContext);
@@ -37,7 +41,7 @@ function Location() {
         setDriver5(res.data[4]);
       }, [])
       .catch((e) => console.log(e));
-  });
+  }, []);
 
   //API Lay toa do thuc va thong so thuc
   useEffect(() => {
@@ -68,11 +72,115 @@ function Location() {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, [lngLatNow]);
+  const mapElement = useRef();
+  const [map, setMap] = useState();
+  const [markers, setMarkers] = useState([]);
+  //const [markerdata1, setMarkerdata1] = useState({});
+  //const [markerdata2, setMarkerdata2] = useState({});
+  const [markersshows, setMarkershows] = useState([]);
 
+  useEffect(() => {
+    const map = tt.map({
+      key: API_KEY,
+      container: mapElement.current,
+      center: SAN_FRANCISCO,
+      zoom: 12,
+    });
+    setMap(map);
+    return () => map.remove();
+  }, []);
+
+  useEffect(() => {
+    setInterval(() => {
+      getDataNow()
+        .then((res) => {
+          //setMarkerdata1({ lng: res.data[0].lng, lat: res.data[0].lat });
+          //setMarkerdata2({ lng: res.data[1].lng, lat: res.data[2].lat });
+          setMarkershows([
+            { lng: res.data[0].lng, lat: res.data[0].lat },
+            { lng: res.data[1].lng, lat: res.data[2].lat },
+          ]);
+        })
+        .catch((err) => console.log(err));
+    }, 5000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //console.log("markerdata", markerdata);
+
+  const addMarker = () => {
+    if (markersshows.length < 3) {
+      // eslint-disable-next-line array-callback-return
+      markersshows.map((markershow) => {
+        let markerinput = markershow;
+        //console.log("markerinput", markerinput);
+        const marker = new tt.Marker().setLngLat(markerinput).addTo(map);
+        //console.log("markers", marker);
+        setMarkers((markers) => [...markers, marker]);
+      });
+    }
+  };
+  //setInterval(() => addMarker(), 10000);
+  const clear = () => {
+    markers.forEach((marker) => marker.remove());
+    setMarkers([]);
+  };
+
+  // const markersroute = [
+  //   { lng: 108.15550725268963, lat: 16.065601463692374 },
+  //   { lng: 108.15630062960264, lat: 16.066754698809433 },
+  // ];
+
+  const route = () => {
+    if (markersshows.length < 2) return;
+    const key = API_KEY;
+    const locations = markersshows;
+    //const locations2 = [markers[1].getLngLat(), markers[2].getLngLat()];
+    //const locations3 = [markers[2].getLngLat(), markers[3].getLngLat()];
+    console.log("locations :", locations);
+    calculateRoute(`${Math.random()}`, {
+      key,
+      locations,
+    });
+  };
+  //setInterval(() => route(), 30000);
+  const calculateRoute = async (number, routeOptions) => {
+    try {
+      const response = await services.calculateRoute(routeOptions);
+      const geojson = response.toGeoJson();
+
+      map.addLayer({
+        id: number,
+        type: "line",
+        source: {
+          type: "geojson",
+          data: geojson,
+        },
+        paint: {
+          "line-color": "red",
+          "line-width": 6,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className={cx("wrapper")}>
-      <MapLibre />
+      <div className={cx("mapwrap")}>
+        <>
+          <div ref={mapElement} className={cx("mapDiv")}></div>
+          <button className={cx("button")} onClick={clear}>
+            Clear
+          </button>
+          <button className={cx("routebt")} onClick={route}>
+            Route
+          </button>
+          <button className={cx("routebt")} onClick={addMarker}>
+            AddMarker
+          </button>
+        </>
+      </div>
       {driverstate === 1 ? (
         <div className={cx("thongso")}>
           <div className={cx("thongsoitem")}>
@@ -150,52 +258,3 @@ function Location() {
 }
 
 export default Location;
-
-// <table className={cx("tableform")}>
-//               <thead>
-//                 <th>1</th>
-//                 <th>1</th>
-//                 <th>1</th>
-//               </thead>
-//               <tbody>
-//                 <td>1</td>
-//                 <td>1</td>
-//                 <td>1</td>
-//               </tbody>
-//             </table>
-
-// <div className={cx("rightContent")}>
-//         <div className={cx("rightTop")}>
-//           <div className={cx("image")}></div>
-//           <div className={cx("wrapInfo")}>
-//             <div className={cx("contentInfo")}>
-//               <div className={cx("bienSoXe")}>43B-678.11</div>
-//               <div className={cx("viTri")}>
-//                 <p>{data2}</p>
-//                 <p>{date}</p>
-//               </div>
-//               <div className={cx("user")}>
-//                 <div className={cx("userImage")}></div>
-//                 <div className={cx("userInfo")}>
-//                   <p>Tài xế</p>
-//                   <div>Nguyen Van Toàn</div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div className={cx("rightBottom")}>
-//           <div className={cx("table")}></div>
-//         </div>
-//       </div>
-
-// useEffect(() => {
-//   DriverManage()
-//     .then((res) => {
-//       const filterDriver = res.data.filter((item) => {
-//         return item.iddriver === driverstate;
-//       });
-//       setDriver(filterDriver[0]);
-//     }, [])
-//     .catch((e) => console.log(e));
-// });

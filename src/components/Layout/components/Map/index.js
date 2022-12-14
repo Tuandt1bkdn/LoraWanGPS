@@ -24,6 +24,7 @@ function MapLibre() {
         style={{ width: "100%", height: "100%" }}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=jCgKzqnyf5RobipHaRTj">
         <Marker longitude={lng} latitude={lat} color="red" />
+        <Marker longitude={108.1673} latitude={16.0677} color="blue" />
       </Map>
     </div>
   );

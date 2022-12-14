@@ -9,13 +9,16 @@ import { UserContext } from "~/components/Layout/DefaultLayout";
 const cx = classNames.bind(styles);
 
 function Warning() {
-  const userinfo = useContext(UserContext);
+  const driverstate = useContext(UserContext);
+  //const release = useContext()
 
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([]);
   const [user3, setUser3] = useState([]);
   const [user4, setUser4] = useState([]);
   const [user5, setUser5] = useState([]);
+  const [tempdata, setTempdata] = useState([]);
+  const [timelabeldata, setTimelabeldata] = useState([]);
 
   useEffect(() => {
     DriverManage()
@@ -30,83 +33,51 @@ function Warning() {
         console.log(e);
       });
   }, []);
-  const [data, setData] = useState({
-    labels: ["", "", "", "", ""],
-    datasets: [
-      {
-        label: "Temparature",
-        data: [23, 25, 32, 29, 27],
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
 
   useEffect(() => {
-    const timelabel = [];
-    const temp = [];
-    const voltage = [];
-    const distance = [];
-    //const datachart = [];
-    getDataNow().then((res) => {
-      const json = res.data;
-      // eslint-disable-next-line array-callback-return
-      json.map((item, index) => {
-        temp.push(item.temp);
-        voltage.push(item.voltage);
-        distance.push(item.distance);
-        timelabel.push(item.realtimelocal.substring(0, 8));
-        setTimeout(() => {
-          setData({
-            labels: timelabel.reverse(),
-            datasets: [
-              {
-                label: "Temparature",
-                data: temp.reverse(),
-                backgroundColor: [
-                  "rgba(75,192,192,1)",
-                  "#ecf0f1",
-                  "#50AF95",
-                  "#f3ba2f",
-                  "#2a71d0",
-                ],
-                borderColor: "black",
-                borderWidth: 2,
-              },
-            ],
-          });
-        }, 3000);
+    setInterval(() => {
+      //recall API
+      getDataNow().then((res) => {
+        const json = res.data;
+        //console.log("recallAPI");
+        setTempdata([
+          json[4].temp,
+          json[3].temp,
+          json[2].temp,
+          json[1].temp,
+          json[0].temp,
+        ]);
+        setTimelabeldata([
+          json[4].realtimelocal.substring(0, 8),
+          json[3].realtimelocal.substring(0, 8),
+          json[2].realtimelocal.substring(0, 8),
+          json[1].realtimelocal.substring(0, 8),
+          json[0].realtimelocal.substring(0, 8),
+        ]);
       });
-    });
-  }, [data]);
-
+    }, 30000);
+  }, []);
+  //console.log("tempdata", tempdata);
   const [datanow, setDatanow] = useState({
     temp: "",
     voltage: "",
     distance: "",
   });
   useEffect(() => {
-    getDataNow()
-      .then((res) => {
-        setTimeout(() => {
+    setInterval(() => {
+      getDataNow()
+        .then((res) => {
           setDatanow({
             temp: res.data[0].temp,
             voltage: res.data[0].voltage,
             distance: res.data[0].distance,
           });
-        }, 1000);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, [datanow]);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }, [5000]);
+  }, []);
 
   const temp = datanow.temp < 30;
   const voltage = datanow.voltage > 220;
@@ -114,11 +85,11 @@ function Warning() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
-        {userinfo === 1 && <LeftBody data={user1} />}
-        {userinfo === 2 && <LeftBody data={user2} />}
-        {userinfo === 3 && <LeftBody data={user3} />}
-        {userinfo === 4 && <LeftBody data={user4} />}
-        {userinfo === 5 && <LeftBody data={user5} />}
+        {driverstate === 1 && <LeftBody data={user1} />}
+        {driverstate === 2 && <LeftBody data={user2} />}
+        {driverstate === 3 && <LeftBody data={user3} />}
+        {driverstate === 4 && <LeftBody data={user4} />}
+        {driverstate === 5 && <LeftBody data={user5} />}
       </div>
       <div className={cx("rightContent")}>
         <div className={cx("rightTop")}>
@@ -143,9 +114,11 @@ function Warning() {
               </div>
               <div className={cx("noti")}>
                 {temp ? (
-                  <div className={cx("safeNoti")}>Nhiet do an toan</div>
+                  <div className={cx("safeNoti")}>Nhiệt độ tốt</div>
                 ) : (
-                  <div className={cx("unsafeNoti")}>Nhiet do khong an toan</div>
+                  <div className={cx("unsafeNoti")}>
+                    Nhiệt độ cao hơn mức đề ra
+                  </div>
                 )}
               </div>
             </div>
@@ -171,9 +144,9 @@ function Warning() {
               </div>
               <div className={cx("noti")}>
                 {voltage ? (
-                  <div className={cx("safeNoti")}>Dien ap on dinh</div>
+                  <div className={cx("safeNoti")}>Điện áp ổn định</div>
                 ) : (
-                  <div className={cx("unsafeNoti")}>Dien ap khong on dinh</div>
+                  <div className={cx("unsafeNoti")}>Điện áp không ổn định</div>
                 )}
               </div>
             </div>
@@ -186,7 +159,7 @@ function Warning() {
                 height="40px"
                 alt="nd"
               />
-              <p className={cx("text")}>Khoảng cách</p>
+              <p className={cx("text")}>Vận tốc</p>
             </div>
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
@@ -194,14 +167,14 @@ function Warning() {
                   <p>{datanow.distance}</p>
                 </div>
                 <div className={cx("unit")}>
-                  <p className={cx("unitStyle")}>km</p>
+                  <p className={cx("unitStyle")}>km/h</p>
                 </div>
               </div>
               <div className={cx("noti")}>
                 {distance ? (
-                  <div className={cx("safeNoti")}>Trong vung cho phep</div>
+                  <div className={cx("safeNoti")}>Vận tốc cho phép</div>
                 ) : (
-                  <div className={cx("unsafeNoti")}>Ngoai vung cho phep</div>
+                  <div className={cx("unsafeNoti")}>Vận tốc quá cao</div>
                 )}
               </div>
             </div>
@@ -209,7 +182,7 @@ function Warning() {
         </div>
         <div className={cx("rightBottom")}>
           <div className={cx("chart")}>
-            <LineChart data={data} />
+            <LineChart data={tempdata} label={timelabeldata} />
           </div>
           <div className={cx("choose")}>
             <button className={cx("button")} /*onClick={handleChart()} */>
