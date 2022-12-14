@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import Button from "~/components/Layout/components/Button";
+import Button from "src/components/Layout/components/Button";
 import styles from "./Setting.Module.scss";
 
 const cx = classNames.bind(styles);

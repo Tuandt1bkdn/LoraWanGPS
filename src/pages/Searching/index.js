@@ -1,8 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Searching.module.scss";
 
-import Map from "~/components/Layout/components/Map";
-//import Type from "~/components/Layout/components/Type";
+import Map from "src/components/Layout/components/Map";
 
 const cx = classNames.bind(styles);
 

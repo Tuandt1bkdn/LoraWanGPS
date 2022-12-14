@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { LoginManager } from "~/api/services/getDataAPI";
+import { LoginManager } from "src/api/services/getDataAPI";
 
 const cx = classNames.bind(styles);
 

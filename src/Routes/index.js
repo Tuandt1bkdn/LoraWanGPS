@@ -2,15 +2,15 @@ import routesConfig from "../config/routes";
 
 // import { HeaderOnly } from "../components/Layout";
 import Home from "../pages/Home";
-import Manage from "~/pages/Manage";
+import Manage from "../pages/Manage";
 import Location from "../pages/Location";
 import Login from "../pages/Login";
 import Warning from "../pages/Warning";
 import Searching from "../pages/Searching";
-import History from "~/pages/History";
-import Setting from "~/pages/Setting";
-import Information from "~/pages/Information";
-import { HeaderOnly } from "~/components/Layout";
+import History from "../pages/History";
+import Setting from "../pages/Setting";
+import Information from "../pages/Information";
+import { HeaderOnly } from "../components/Layout";
 
 const publicRoutes = [
   { path: routesConfig.home, component: Home },

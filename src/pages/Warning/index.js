@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import classNames from "classnames/bind";
 import styles from "./Warning.module.scss";
-import { DriverManage, getDataNow } from "~/api/services/getDataAPI";
-import LineChart from "~/components/Layout/components/LineChart";
-import LeftBody from "~/components/Layout/components/LeftBody";
-import { UserContext } from "~/components/Layout/DefaultLayout";
+import { DriverManage, getDataNow } from "src/api/services/getDataAPI";
+import LineChart from "src/components/Layout/components/LineChart";
+import LeftBody from "src/components/Layout/components/LeftBody";
+import { UserContext } from "src/components/Layout/DefaultLayout";
 
 const cx = classNames.bind(styles);
 

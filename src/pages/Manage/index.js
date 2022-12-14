@@ -4,7 +4,7 @@ import styles from "./Manage.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { DriverManage } from "~/api/services/getDataAPI";
+import { DriverManage } from "src/api/services/getDataAPI";
 const cx = classNames.bind(styles);
 
 function Manage() {

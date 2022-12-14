@@ -8,9 +8,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import styles from "./Location.module.scss";
-import { DriverManage, getDataNow } from "~/api/services/getDataAPI";
-import InforOnMap from "~/components/Layout/components/InforOnMap";
-import { UserContext } from "~/components/Layout/DefaultLayout";
+import { DriverManage, getDataNow } from "src/api/services/getDataAPI";
+import InforOnMap from "src/components/Layout/components/InforOnMap";
+import { UserContext } from "src/components/Layout/DefaultLayout";
 import tt from "@tomtom-international/web-sdk-maps";
 import { services } from "@tomtom-international/web-sdk-services";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";

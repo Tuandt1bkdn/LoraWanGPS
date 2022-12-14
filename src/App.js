@@ -1,17 +1,17 @@
 //import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DefaultLayout } from "./components/Layout";
-import PrivateRoute from "~/Routes/PrivateRoute";
+import PrivateRoute from "/src/Routes/PrivateRoute";
 import routes from "./config/routes";
 import Login from "./pages/Login";
-import Home from "~/pages/Home";
-import Manage from "~/pages/Manage";
-import Location from "~/pages/Location";
-import Warning from "~/pages/Warning";
-import Searching from "~/pages/Searching";
-import History from "~/pages/History";
-import Setting from "~/pages/Setting";
-import Information from "~/pages/Information";
+import Home from "./pages/Home";
+import Manage from "./pages/Manage";
+import Location from "./pages/Location";
+import Warning from "./pages/Warning";
+import Searching from "./pages/Searching";
+import History from "./pages/History";
+import Setting from "./pages/Setting";
+import Information from "./pages/Information";
 
 function App() {
   const isAuthenticated = true;
