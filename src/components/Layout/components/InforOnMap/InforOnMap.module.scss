@@ -1,160 +1,158 @@
 .wrapper {
-    display: flex;
-    height: 1200px;
-    width: 100%;
-    flex: 10;
-    border-top: 1px solid rgb(194, 193, 193);
+  display: flex;
+  height: 1200px;
+  width: 100%;
+  flex: 10;
+  border-top: 1px solid rgb(194, 193, 193);
 }
-.info{
-    position: fixed;
-    border-radius: 20px;
-    border: 0.5px solid rgb(235, 230, 230);
-    bottom: 20px;
-    right: 50px;
-    width: 700px;
+.info {
+  position: fixed;
+  border-radius: 20px;
+  border: 0.5px solid rgb(235, 230, 230);
+  bottom: 20px;
+  right: 50px;
+  width: 700px;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  .info__headerinfo {
+    width: 90%;
     height: 30%;
-    background-color: white;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    .info__headerinfo{
-        width: 90%;
-        height: 30%;
-        display: flex;
-        align-items: center;
-        .info__headerinfo-left{
-            width: 45%;
-            height: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
+    .info__headerinfo-left {
+      width: 45%;
+      height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .info_headerinfo-name{
-        height: 80%;
-        margin-left: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-}
-.info_contentinfo{
-    width: 90%;
-    height: 20%;
-    display: flex;
-    justify-content: space-around;
-    .info_contentinfo-item{
-        width: 25%;
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .item_title{
-            font-size: 18px;
-            font-weight: 500;
-            color: #B2B2B2;
-            display: flex;
-            align-items: center;
-        }
-        .item_data{
-            font-size: 18px;
-            font-weight: 600;    
-        }
-    }
-}
-.info_bottom{
-    width: 90%;
-    height: 120px;
+  }
+  .info_headerinfo-name {
+    height: 80%;
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    .info_bottom-time{
-        display: flex;
-        height: 40px;
-        align-items: center;
-        font-size: 20px;
-        font-weight: 500;     
-        color: rgb(73, 229, 99);
-        .timeicon{
-            padding-right: 20px;
-            font-size: 30px;
-        }
-    }
-
+    justify-content: space-around;
+  }
 }
-.info_bottom-location{
-    margin-top: 10px;
+.info_contentinfo {
+  width: 90%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  .info_contentinfo-item {
+    width: 25%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .item_title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #b2b2b2;
+      display: flex;
+      align-items: center;
+    }
+    .item_data {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+.info_bottom {
+  width: 90%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .info_bottom-time {
+    display: flex;
+    height: 40px;
+    align-items: center;
     font-size: 20px;
     font-weight: 500;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    color: rgb(73, 229, 99);
+    .timeicon {
+      padding-right: 20px;
+      font-size: 30px;
+    }
+  }
+}
+.info_bottom-location {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.info_headerinfo-right{
+.info_headerinfo-right {
+  width: 50%;
+  height: 90%;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  .info_callnumber {
     width: 50%;
-    height: 90%;
+    height: 100%;
     display: flex;
-    background-color: white;
-    flex-direction: column;
-    .info_callnumber{
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .callbutton{
-            display: flex;
-            margin-left: 15px;
-            padding: 15px 45px;
-            border-radius: 25px;
-            justify-content: space-around;
-            align-items: center;
-            color: white;
-            background-color: rgb(94, 167, 94);
-            font-weight: 500;
-            &:hover{
-                
-                background-color: rgb(174, 240, 174);
-            }
-            cursor: pointer;
-            .mobileicon{
-                padding-right: 10px;
-            }
-        }
-    }
-}
-.thongso{
-    position: fixed;
-    background-color: white;
-    border: 0.5px solid rgb(235, 230, 230);
-    top: 120px;
-    right: 50px;
-    width: 500px;
-    height: 90px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    .thongsoitem{
-        width: 33%;
-        height: 60%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .thongsoitemcontent{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding-left: 10px;
-        }
-        .thongso-item-text{
-            font-size: 20px;
-            font-weight: 500;
-            text-align: center;
-        }
+    .callbutton {
+      display: flex;
+      margin-left: 15px;
+      padding: 15px 45px;
+      border-radius: 25px;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+      background-color: rgb(94, 167, 94);
+      font-weight: 500;
+      &:hover {
+        background-color: rgb(174, 240, 174);
+      }
+      cursor: pointer;
+      .mobileicon {
+        padding-right: 10px;
+      }
     }
-    .thongsoitem + .thongsoitem {
-        border-left: 1px solid rgb(227, 221, 221);
+  }
+}
+.thongso {
+  position: fixed;
+  background-color: white;
+  border: 0.5px solid rgb(235, 230, 230);
+  top: 120px;
+  right: 50px;
+  width: 500px;
+  height: 90px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .thongsoitem {
+    width: 33%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .thongsoitemcontent {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 10px;
     }
+    .thongso-item-text {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+  .thongsoitem + .thongsoitem {
+    border-left: 1px solid rgb(227, 221, 221);
+  }
 }
