@@ -24,25 +24,22 @@ function LeftBody({ data, useractive }) {
       <div className={cx("header")}>
         <div className={cx("headerDrawer")}>THÔNG TIN CHUNG</div>
         <div className={cx("content")}>
-          <div className={cx("content1")}>
-            <div className={cx("content1_1")}>
-              <div className={cx("image")}></div>
-              <div className={cx("info1")}>
-                <div className={cx("info2")}>
-                  <p className={cx("text")}>Họ và Tên : {data.name}</p>
-                </div>
-                <div className={cx("info2")}>
-                  <p className={cx("text")}>Ngày sinh : {data.dob}</p>
-                </div>
-                <div className={cx("info2")}>
-                  <p className={cx("text")}>CCCD : {data.cccd}</p>
-                </div>
-                <div className={cx("info2")}>
-                  <p className={cx("text")}>Số điện thoại : {data.phone}</p>
-                </div>
+          <div className={cx("content1_1")}>
+            <div className={cx("image")}></div>
+            <div className={cx("info1")}>
+              <div className={cx("info2")}>
+                <p className={cx("text")}>Họ và Tên : {data.name}</p>
+              </div>
+              <div className={cx("info2")}>
+                <p className={cx("text")}>Ngày sinh : {data.dob}</p>
+              </div>
+              <div className={cx("info2")}>
+                <p className={cx("text")}>CCCD : {data.cccd}</p>
+              </div>
+              <div className={cx("info2")}>
+                <p className={cx("text")}>Số điện thoại : {data.phone}</p>
               </div>
             </div>
-            <div></div>
           </div>
         </div>
       </div>
@@ -51,8 +48,11 @@ function LeftBody({ data, useractive }) {
           <img
             src="https://picar.vn/wp-content/uploads/2022/05/xe-gia-dinh-4-cho.png"
             alt="xe o to"
-            width="100%"
-            height="auto"
+            style={{
+              objectFit: "fill",
+              width: "100%",
+              height: 300,
+            }}
           />
           <div className={cx("textBody")}>
             <div className={cx("text")}>

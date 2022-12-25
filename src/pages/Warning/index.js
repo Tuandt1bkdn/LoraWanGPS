@@ -128,7 +128,7 @@ function Warning() {
           <div className={cx("boxValue")}>
             <div className={cx("headerBox")}>
               <img
-                src="https://banner2.cleanpng.com/20180703/ale/kisspng-computer-icons-electricity-symbol-icon-design-high-top-bolt-5b3ba5ac033830.9402347715306356920132.jpg"
+                src="https://www.pngplay.com/wp-content/uploads/6/Yellow-High-Voltage-Transparent-PNG.png"
                 width="50px"
                 height="40px"
                 alt="nd"
@@ -156,7 +156,7 @@ function Warning() {
           <div className={cx("boxValue")}>
             <div className={cx("headerBox")}>
               <img
-                src="https://png.pngtree.com/png-clipart/20190614/original/pngtree-vector-distance-icon-png-image_3767406.jpg"
+                src="https://www.transparentpng.com/thumb/speed/oXHTYr-speed-green-indicator-vector-image.png"
                 width="40px"
                 height="40px"
                 alt="nd"

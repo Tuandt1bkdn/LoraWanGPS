@@ -3,26 +3,31 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .header {
   width: 100%;
-  height: 30%;
+  height: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 30px;
 }
+
 .footer {
   width: 100%;
-  height: 10vh;
-
+  height: 12vh;
+  //background-color: red;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   .footer1 {
     padding: 5px;
     margin-left: 10px;
     text-align: left;
-    //background-color: red;
     .linkto {
       text-align: right;
       color: rgb(116, 113, 113);
@@ -34,16 +39,18 @@
 }
 .body {
   width: 95%;
-  height: 470px;
-  border-bottom: 1px solid black;
+  height: 480px;
+  border-bottom: 1px solid rgb(227, 221, 221);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   .textBody {
     margin-top: 20px;
     width: 100%;
-    height: 120px;
+    height: 140px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     .text {
       width: 100%;
       height: 30px;
@@ -51,16 +58,17 @@
   }
   .img {
     width: 100%;
-    height: 400px;
-  }
+    height: 300px;
+    }
 }
 .headerDrawer {
+  margin-top: 20px;
   padding: 10px 0 0 10px;
   font-size: 25px;
   font-weight: 600;
 }
 .content {
-  margin-top: 20px;
+  margin-bottom: 20px;
   width: 95%;
   height: calc(100% - 40px);
   display: flex;
@@ -76,22 +84,22 @@
 .content1_1 {
   width: 100%;
   height: 100%;
-
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  border-bottom: 1px solid black;
+  align-items: center;
+  border-bottom: 1px solid rgb(227, 221, 221);
 }
 .image {
   width: 120px;
-  height: 150px;
+  height: 170px;
   border-radius: 15px;
   background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/07/mau-anh-the-dep-lam-the-can-cuoc.jpg');
   background-size: cover;
+  box-shadow: rgba(50, 50, 93, 0.8) 0px 6px 12px -2px, rgba(0, 0, 0, 0.5) 6px 6px 17px -3px;
 }
 .info1 {
   width: 280px;
-  height: 150px;
+  height: 200px;
   font-size: 17px;
   display: flex;
   flex-direction: column;
@@ -101,6 +109,7 @@
   height: 25%;
   display: flex;
   align-items: center;
+
 }
 .text {
   font-size: 19px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Home.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -15,6 +15,13 @@ import {
 const cx = classNames.bind(styles);
 
 function Home() {
+  const [intro1, setIntro1] = useState(false);
+  const [intro2, setIntro2] = useState(false);
+  const [intro3, setIntro3] = useState(false);
+  const [gioithieu_box1, setGioithieu_box1] = useState("gioithieu_box_leave");
+  const [gioithieu_box2, setGioithieu_box2] = useState("gioithieu_box_leave");
+  const [gioithieu_box3, setGioithieu_box3] = useState("gioithieu_box_leave");
+  console.log("re-render");
   return (
     <div className={cx("wrapper")}>
       <Carousel
@@ -51,29 +58,64 @@ function Home() {
       </Carousel>
       <div className={cx("gioithieu")}>
         <div className={cx("gioithieu_boxwrap")}>
-          <div className={cx("gioithieu_box")}>
+          <div
+            className={cx(`${gioithieu_box1}`)}
+            onMouseEnter={() => {
+              setIntro1(true);
+              setGioithieu_box1("gioithieu_box_enter");
+            }}
+            onMouseLeave={() => {
+              setIntro1(false);
+              setGioithieu_box1("gioithieu_box_leave");
+            }}>
             <img
               src={quanlytaixe}
               alt="anh gioi thieu 1"
               className={cx("gioithieu_img")}
             />
-            {/* <p>Quản lý danh sách tài xế</p> -*/}
+            {intro1 && (
+              <div className={cx("intro_text")}>Quản lý danh sách tài xế</div>
+            )}
           </div>
-          <div className={cx("gioithieu_box")}>
+          <div
+            className={cx(`${gioithieu_box2}`)}
+            onMouseEnter={() => {
+              setIntro2(true);
+              setGioithieu_box2("gioithieu_box_enter");
+            }}
+            onMouseLeave={() => {
+              setIntro2(false);
+              setGioithieu_box2("gioithieu_box_leave");
+            }}>
             <img
               src={dinhvi}
               alt="anh gioi thieu 1"
               className={cx("gioithieu_img")}
             />
-            {/*<p>Giám sát vị trí hiện tại</p>*/}
+            {intro2 && (
+              <div className={cx("intro_text")}>Giám sát vị trí hiện tại</div>
+            )}
           </div>
-          <div className={cx("gioithieu_box")}>
+          <div
+            className={cx(`${gioithieu_box3}`)}
+            onMouseEnter={() => {
+              setIntro3(true);
+              setGioithieu_box3("gioithieu_box_enter");
+            }}
+            onMouseLeave={() => {
+              setIntro3(false);
+              setGioithieu_box3("gioithieu_box_leave");
+            }}>
             <img
               src={thongso}
               alt="anh gioi thieu 1"
               className={cx("gioithieu_img")}
             />
-            {/*<p>Thông số các cảm biến và biểu đồ</p>*/}
+            {intro3 && (
+              <div className={cx("intro_text")}>
+                Thông số các cảm biến và biểu đồ
+              </div>
+            )}
           </div>
         </div>
         <div className={cx("step")}>
