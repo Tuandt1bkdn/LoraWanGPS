@@ -21,6 +21,7 @@ const SAN_FRANCISCO = [108.20623, 16.047079];
 
 function Location() {
   const driverstate = useContext(UserContext);
+  console.log("driverstate", driverstate);
   const [lngLatNow, getLngLatNow] = useState("");
   const [para, getPara] = useState({});
 
@@ -66,7 +67,6 @@ function Location() {
       )
       .then((response) => {
         const json = response.data.features[0].place_name_vi;
-        //console.log(json);
         setData2(json);
       })
       .catch((error) => {
@@ -106,16 +106,13 @@ function Location() {
     }, 5000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //console.log("markerdata", markerdata);
 
   const addMarker = () => {
     if (markersshows.length < 3) {
       // eslint-disable-next-line array-callback-return
       markersshows.map((markershow) => {
         let markerinput = markershow;
-        //console.log("markerinput", markerinput);
         const marker = new tt.Marker().setLngLat(markerinput).addTo(map);
-        //console.log("markers", marker);
         setMarkers((markers) => [...markers, marker]);
       });
     }
@@ -230,7 +227,7 @@ function Location() {
                   textAlign: "center",
                   paddingTop: "10px",
                 }}>
-                {para.distance}km/h
+                {para.speed}km/h
               </p>
             </div>
           </div>

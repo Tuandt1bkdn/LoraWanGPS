@@ -1,19 +1,19 @@
 // import classNames from "classnames/bind";
-import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { LoginManager } from 'src/api/services/getDataAPI';
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { LoginManager } from "src/api/services/getDataAPI";
 // import "./login.scss";
 
 // const cx = classNames.bind(styles);
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 function Login() {
   function containsObject({ username: user, passWord: pass }, list) {
     var i;
     for (i = 0; i < list.length; i++) {
-      if (list[i].userName === user && list[i].Password === pass) {
+      if (list[i].username === user && list[i].password === pass) {
         return true;
       }
     }
@@ -22,28 +22,28 @@ function Login() {
   let navigate = useNavigate();
   const [login, setLogin] = useState([]);
   console.log(login);
-  const [user, setUser] = useState('');
-  const [pass, setPassWord] = useState('');
+  const [user, setUser] = useState("");
+  const [pass, setPassWord] = useState("");
 
   const handleSubmit = () => {
     const body = {
       username: user,
       passWord: pass,
     };
-    console.log('body=', body);
+    console.log("body=", body);
     var checkLogin = containsObject(body, login);
 
-    console.log('checkLogin =', checkLogin);
+    console.log("checkLogin =", checkLogin);
     if (checkLogin === true) {
-      localStorage.setItem('isAuthenticated', 'true');
-      console.log('isValidated', localStorage.getItem('isAuthenticated'));
-      alert('nhap dung');
-      navigate('quanly');
+      localStorage.setItem("isAuthenticated", "true");
+      console.log("isValidated", localStorage.getItem("isAuthenticated"));
+      alert("nhap dung");
+      navigate("quanly");
     } else {
       MySwal.fire({
-        icon: 'error',
-        title: 'Lỗi...',
-        text: 'Sai toàn khoản hoặc mật khẩu!',
+        icon: "error",
+        title: "Lỗi...",
+        text: "Sai toàn khoản hoặc mật khẩu!",
       });
     }
   };
@@ -52,7 +52,7 @@ function Login() {
     LoginManager()
       .then((res) => {
         setLogin(res.data);
-        console.log('setLogin', res.data);
+        console.log("setLogin", res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -66,9 +66,7 @@ function Login() {
           className="w-full h-full "
         />
       </div>
-      <div
-        className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
-        flex items-center justify-center">
+      <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
         <div className="w-full h-100">
           <img
             src="https://www.semtech.com/uploads/images/LoRa_Web_Home_LoRaWAN.png"
@@ -105,14 +103,13 @@ function Login() {
               id
               placeholder="Nhập mật khẩu"
               minLength={6}
-              className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               required
             />
           </div>
           <div className="text-right mt-2">
             <a
-              href="#"
+              href={" "}
               className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
               Forgot Password?
             </a>
@@ -120,8 +117,7 @@ function Login() {
           <button
             onClick={handleSubmit}
             type="submit"
-            className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-              px-4 py-3 mt-6">
+            className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">
             Đăng nhập
           </button>
           <hr className="my-6 border-gray-300 w-full" />

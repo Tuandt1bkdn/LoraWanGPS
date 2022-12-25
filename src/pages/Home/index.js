@@ -85,7 +85,11 @@ function Home() {
               }}>
               LoRaWAN GPS
             </p>
-            <p>Su dung cong nghe mang LoRaWAN va Gateway, thu thap du le</p>
+            <p>
+              Sử dụng công nghệ mạng LoRaWAN và GateWay để thu thập dữ liệu, đưa
+              lên The Things Stack và chuyển vào hệ quản trị cơ sở dữ liệu
+              MySQL, hiển thị thông số lên giao diện người dùng
+            </p>
           </div>
           <div className={cx("tongquan_bottom")}>
             <div className={cx("step_bottom3")}>

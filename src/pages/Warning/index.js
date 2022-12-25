@@ -39,7 +39,6 @@ function Warning() {
       //recall API
       getDataNow().then((res) => {
         const json = res.data;
-        //console.log("recallAPI");
         setTempdata([
           json[4].temp,
           json[3].temp,
@@ -61,7 +60,7 @@ function Warning() {
   const [datanow, setDatanow] = useState({
     temp: "",
     voltage: "",
-    distance: "",
+    speed: "",
   });
   useEffect(() => {
     setInterval(() => {
@@ -70,7 +69,7 @@ function Warning() {
           setDatanow({
             temp: res.data[0].temp,
             voltage: res.data[0].voltage,
-            distance: res.data[0].distance,
+            speed: res.data[0].speed,
           });
         })
         .catch((e) => {
@@ -80,8 +79,8 @@ function Warning() {
   }, []);
 
   const temp = datanow.temp < 30;
-  const voltage = datanow.voltage > 220;
-  const distance = datanow.distance < 15;
+  const voltage = datanow.voltage < 15;
+  const speed = datanow.speed < 75;
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
@@ -98,8 +97,11 @@ function Warning() {
               <img
                 src="https://www.pngkey.com/png/full/542-5421709_cartoon-sun-temperature-element-transparent-free-event.png"
                 width="40px"
-                height="40px"
+                height="30px"
                 alt="nd"
+                style={{
+                  marginLeft: 15,
+                }}
               />
               <p className={cx("text")}>Nhiệt độ nước làm mát</p>
             </div>
@@ -164,14 +166,14 @@ function Warning() {
             <div className={cx("valueBox")}>
               <div className={cx("vlB")}>
                 <div className={cx("value")}>
-                  <p>{datanow.distance}</p>
+                  <p>{datanow.speed}</p>
                 </div>
                 <div className={cx("unit")}>
                   <p className={cx("unitStyle")}>km/h</p>
                 </div>
               </div>
               <div className={cx("noti")}>
-                {distance ? (
+                {speed ? (
                   <div className={cx("safeNoti")}>Vận tốc cho phép</div>
                 ) : (
                   <div className={cx("unsafeNoti")}>Vận tốc quá cao</div>
