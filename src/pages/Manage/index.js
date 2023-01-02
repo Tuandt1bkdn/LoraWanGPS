@@ -6,6 +6,8 @@ import { DriverManage } from "src/api/services/getDataAPI";
 const cx = classNames.bind(styles);
 
 function Manage() {
+  const [change, setChange] = useState(false);
+
   const [data, setData] = useState([]);
   useEffect(() => {
     DriverManage()
@@ -91,6 +93,20 @@ function Manage() {
       </form>
 
       <div className={cx("body")}>
+        {change && (
+          <div className={cx("change-driverinfo")}>
+            <div className={cx("change-driverinfo_heading")}>
+              <div className="flex justify-center items-end text-xl text-black-300 w-full">
+                Sua thong tin
+              </div>
+              <div
+                className="w-8 h-8  absolute right-0 top-0 flex justify-center items-center text-2xl"
+                onClick={() => setChange(false)}>
+                X
+              </div>
+            </div>
+          </div>
+        )}
         <div className="flex">
           <a
             href={" "}
@@ -221,6 +237,13 @@ function Manage() {
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                               onClick={routeChange}>
                               Kiểm tra
+                            </button>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <button
+                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              onClick={() => setChange(true)}>
+                              Sua doi
                             </button>
                           </td>
                         </tr>

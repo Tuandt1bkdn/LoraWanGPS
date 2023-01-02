@@ -17,7 +17,10 @@ function Warning() {
   const [user3, setUser3] = useState([]);
   const [user4, setUser4] = useState([]);
   const [user5, setUser5] = useState([]);
+  const [chart, setChart] = useState("tempchart");
   const [tempdata, setTempdata] = useState([]);
+  const [voltagedata, setVoltagedata] = useState([]);
+  const [speeddata, setSpeeddata] = useState([]);
   const [timelabeldata, setTimelabeldata] = useState([]);
 
   useEffect(() => {
@@ -45,6 +48,20 @@ function Warning() {
           json[2].temp,
           json[1].temp,
           json[0].temp,
+        ]);
+        setVoltagedata([
+          json[4].voltage,
+          json[3].voltage,
+          json[2].voltage,
+          json[1].voltage,
+          json[0].voltage,
+        ]);
+        setSpeeddata([
+          json[4].speed,
+          json[3].speed,
+          json[2].speed,
+          json[1].speed,
+          json[0].speed,
         ]);
         setTimelabeldata([
           json[4].realtimelocal.substring(0, 8),
@@ -77,7 +94,6 @@ function Warning() {
         });
     }, [5000]);
   }, []);
-
   const temp = datanow.temp < 30;
   const voltage = datanow.voltage < 15;
   const speed = datanow.speed < 75;
@@ -132,6 +148,9 @@ function Warning() {
                 width="50px"
                 height="40px"
                 alt="nd"
+                style={{
+                  marginLeft: 15,
+                }}
               />
               <p className={cx("text")}>Điện áp bình Acquy</p>
             </div>
@@ -160,6 +179,9 @@ function Warning() {
                 width="40px"
                 height="40px"
                 alt="nd"
+                style={{
+                  marginLeft: 15,
+                }}
               />
               <p className={cx("text")}>Vận tốc</p>
             </div>
@@ -184,14 +206,40 @@ function Warning() {
         </div>
         <div className={cx("rightBottom")}>
           <div className={cx("chart")}>
-            <LineChart data={tempdata} label={timelabeldata} />
+            {chart === "tempchart" && (
+              <LineChart
+                data={tempdata}
+                label={timelabeldata}
+                type="Temparature"
+              />
+            )}
+            {chart === "voltchart" && (
+              <LineChart
+                data={voltagedata}
+                label={timelabeldata}
+                type="Voltage"
+              />
+            )}
+            {chart === "speedchart" && (
+              <LineChart data={speeddata} label={timelabeldata} type="Speed" />
+            )}
           </div>
           <div className={cx("choose")}>
-            <button className={cx("button")} /*onClick={handleChart()} */>
+            <button
+              className={cx("button")}
+              onClick={() => setChart("tempchart")}>
               Nhiệt độ nước
             </button>
-            <button className={cx("button")}>Điện áp Acquy</button>
-            <button className={cx("button")}>Vận tốc</button>
+            <button
+              className={cx("button")}
+              onClick={() => setChart("voltchart")}>
+              Điện áp Acquy
+            </button>
+            <button
+              className={cx("button")}
+              onClick={() => setChart("speedchart")}>
+              Vận tốc
+            </button>
           </div>
         </div>
       </div>

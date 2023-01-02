@@ -15,7 +15,7 @@ import Information from "./pages/Information";
 
 function App() {
   const isAuthenticated = true;
-  console.log("state=", isAuthenticated);
+  //console.log("state=", isAuthenticated);
   return (
     <Router>
       <div className="App">

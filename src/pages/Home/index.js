@@ -21,7 +21,7 @@ function Home() {
   const [gioithieu_box1, setGioithieu_box1] = useState("gioithieu_box_leave");
   const [gioithieu_box2, setGioithieu_box2] = useState("gioithieu_box_leave");
   const [gioithieu_box3, setGioithieu_box3] = useState("gioithieu_box_leave");
-  console.log("re-render");
+  //console.log("re-render");
   return (
     <div className={cx("wrapper")}>
       <Carousel
@@ -35,7 +35,14 @@ function Home() {
             alt="anh1"
             className={cx("imagecarousel")}
           />
-          <p className="legend" style={{ fontSize: 20, fontWeight: 300 }}>
+          <p
+            className="legend"
+            style={{
+              fontSize: 20,
+              fontWeight: 300,
+              backgroundColor: "black",
+              opacity: 0.7,
+            }}>
             IoT là xu hướng mới của thế giới
           </p>
         </div>
@@ -45,15 +52,33 @@ function Home() {
             alt="anh2"
             className={cx("imagecarousel")}
           />
-          <p className="legend">Legend 2</p>
+          <p
+            className="legend"
+            style={{
+              fontSize: 20,
+              fontWeight: 300,
+              backgroundColor: "black",
+              opacity: 0.5,
+            }}>
+            Ứng dụng truyền thông LoRaWAN trong giám sát
+          </p>
         </div>
         <div>
           <img
-            src="https://cdnimg.vietnamplus.vn/t660/uploaded/rutmzt/2015_06_11/vi_mach123rfcom.jpg"
+            src="https://railsware.com/blog/wp-content/uploads/2019/07/Why-we-use-ReactJS-for-our-projects-Illustration.jpg"
             alt="anh3"
             className={cx("imagecarousel")}
           />
-          <p className="legend">Legend 3</p>
+          <p
+            className="legend"
+            style={{
+              fontSize: 20,
+              fontWeight: 300,
+              backgroundColor: "black",
+              opacity: 0.5,
+            }}>
+            ReactJS là một thư viện phổ biến trong lập trình web hiện nay
+          </p>
         </div>
       </Carousel>
       <div className={cx("gioithieu")}>

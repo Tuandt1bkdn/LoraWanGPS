@@ -6,7 +6,7 @@ import { useState, createContext } from "react";
 import Footer from "../Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useStore } from "/src/store";
+//import { useStore } from "/src/store";
 
 export const UserContext = createContext();
 console.log("UserContext", UserContext);
@@ -14,12 +14,12 @@ console.log("UserContext", UserContext);
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-  const [state, dispatch] = useStore();
-  console.log("state", [state, dispatch]);
+  //const [state, dispatch] = useStore();
+  //console.log("state", [state, dispatch]);
   const currentUser = true;
   const [userinfo, setUserInfo] = useState(1);
   const [release, setRelease] = useState(false);
-  console.log("userinfo", userinfo);
+  //console.log("userinfo", userinfo);
   return (
     <UserContext.Provider value={userinfo}>
       <div className={cx("wrapper")}>

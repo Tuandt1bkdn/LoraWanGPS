@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 // eslint-disable-next-line no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
 
-function LineChart({ data, label }) {
+function LineChart({ data, label, type }) {
   return (
     <div style={{ width: "700px", height: "400px" }}>
       <Line
@@ -11,7 +11,7 @@ function LineChart({ data, label }) {
           labels: label,
           datasets: [
             {
-              label: "Temparature",
+              label: type,
               data: data,
               backgroundColor: [
                 "rgba(75,192,192,1)",

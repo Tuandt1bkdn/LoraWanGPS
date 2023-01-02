@@ -9,7 +9,6 @@
     //justify-content: center;
     flex-direction: column;
     align-items: center;
-    //background-color: red;
 }
 .carousel{
     margin-top: 5px;
@@ -38,10 +37,8 @@
     
 }
 .headerTable{
-    //border: 1px solid black;
     text-align: center;
     height: 40px;
-    //background-color: red;
 }
 .mapDiv{
     //position: relative;
@@ -69,22 +66,19 @@
     height: 350px;
     display: flex;
     justify-content: center;
-    //-color:blue;
 }
 .gioithieu_box_leave{
     margin: 20px;
     width: 25%;
     height: 300px;
-    background-color: blue;
     position: relative;
 }
 .gioithieu_box_enter{
     margin: 20px;
     width: 25%;
     height: 300px;
-    background-color: blue;
     position: relative;
-    border: 1px solid red
+    border: 1px solid rgb(68, 18, 234)
 }
 .gioithieu_img{
     width: 480px ;
@@ -97,10 +91,12 @@
     left: 0;
     right: 0;
     top: 230px;
-    background-color: red;
+    background-image: linear-gradient(45deg, rgb(193, 158, 246), rgb(49, 49, 238));
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-size: 20px;
 }
 .step{
     width: 100%;

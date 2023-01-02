@@ -37,7 +37,11 @@ function Login() {
     if (checkLogin === true) {
       localStorage.setItem("isAuthenticated", "true");
       console.log("isValidated", localStorage.getItem("isAuthenticated"));
-      alert("nhap dung");
+      MySwal.fire({
+        icon: "success",
+        title: "Đăng nhập thành công",
+        text: "Mời bạn truy cập tài nguyên!",
+      });
       navigate("quanly");
     } else {
       MySwal.fire({

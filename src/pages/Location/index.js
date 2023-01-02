@@ -3,6 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBoltLightning,
+  faExclamationTriangle,
   faGaugeHigh,
   faTemperatureLow,
 } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +22,6 @@ const SAN_FRANCISCO = [108.20623, 16.047079];
 
 function Location() {
   const driverstate = useContext(UserContext);
-  console.log("driverstate", driverstate);
   const [lngLatNow, getLngLatNow] = useState("");
   const [para, getPara] = useState({});
 
@@ -30,8 +30,20 @@ function Location() {
   const [driver3, setDriver3] = useState({});
   const [driver4, setDriver4] = useState({});
   const [driver5, setDriver5] = useState({});
+  const [hideinfo, setHideInfo] = useState(true);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setHideInfo(false);
+      } else {
+        setHideInfo(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+  }, []);
   //API lay thong tin tai xe
+
   useEffect(() => {
     DriverManage()
       .then((res) => {
@@ -188,7 +200,7 @@ function Location() {
               fontWeight={700}
             />
             <div className={cx("thongsoitemcontent")}>
-              <p className={cx("thongso-item-text")}>Nhiet do</p>
+              <p className={cx("thongso-item-text")}>Nhiệt độ</p>
               <p
                 style={{
                   fontSize: "20px",
@@ -206,7 +218,7 @@ function Location() {
               fontSize={30}
             />
             <div className={cx("thongsoitemcontent")}>
-              <p className={cx("thongso-item-text")}>Dien ap</p>
+              <p className={cx("thongso-item-text")}>Điện áp</p>
               <p
                 style={{
                   fontSize: "20px",
@@ -220,7 +232,7 @@ function Location() {
           <div className={cx("thongsoitem")}>
             <FontAwesomeIcon icon={faGaugeHigh} color="#B3FFAE" fontSize={30} />
             <div className={cx("thongsoitemcontent")}>
-              <p className={cx("thongso-item-text")}>Van toc</p>
+              <p className={cx("thongso-item-text")}>Vận tốc</p>
               <p
                 style={{
                   fontSize: "20px",
@@ -233,22 +245,36 @@ function Location() {
           </div>
         </div>
       ) : (
-        <div className={cx("thongso")}>Tam khong co du lieu</div>
+        <div className={cx("thongso_inactive")}>
+          <FontAwesomeIcon
+            icon={faExclamationTriangle}
+            style={{
+              color: "#ece911",
+              fontSize: 25,
+              paddingRight: 15,
+            }}
+          />
+          Tam khong co du lieu
+        </div>
       )}
-      {driverstate === 1 && (
-        <InforOnMap data={driver1} number={1} location={data2} />
-      )}
-      {driverstate === 2 && (
-        <InforOnMap data={driver2} number={0} location={data2} />
-      )}
-      {driverstate === 3 && (
-        <InforOnMap data={driver3} number={0} location={data2} />
-      )}
-      {driverstate === 4 && (
-        <InforOnMap data={driver4} number={0} location={data2} />
-      )}
-      {driverstate === 5 && (
-        <InforOnMap data={driver5} number={0} location={data2} />
+      {hideinfo && (
+        <>
+          {driverstate === 1 && (
+            <InforOnMap data={driver1} number={1} location={data2} />
+          )}
+          {driverstate === 2 && (
+            <InforOnMap data={driver2} number={0} location={data2} />
+          )}
+          {driverstate === 3 && (
+            <InforOnMap data={driver3} number={0} location={data2} />
+          )}
+          {driverstate === 4 && (
+            <InforOnMap data={driver4} number={0} location={data2} />
+          )}
+          {driverstate === 5 && (
+            <InforOnMap data={driver5} number={0} location={data2} />
+          )}
+        </>
       )}
     </div>
   );
