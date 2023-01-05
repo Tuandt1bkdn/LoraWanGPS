@@ -30,10 +30,10 @@ function Login() {
       username: user,
       passWord: pass,
     };
-    console.log("body=", body);
+    //console.log("body=", body);
     var checkLogin = containsObject(body, login);
 
-    console.log("checkLogin =", checkLogin);
+    //console.log("checkLogin =", checkLogin);
     if (checkLogin === true) {
       localStorage.setItem("isAuthenticated", "true");
       console.log("isValidated", localStorage.getItem("isAuthenticated"));
@@ -42,7 +42,7 @@ function Login() {
         title: "Đăng nhập thành công",
         text: "Mời bạn truy cập tài nguyên!",
       });
-      navigate("quanly");
+      navigate("trangchu");
     } else {
       MySwal.fire({
         icon: "error",
@@ -70,7 +70,7 @@ function Login() {
           className="w-full h-full "
         />
       </div>
-      <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
+      <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
         <div className="w-full h-100">
           <img
             src="https://www.semtech.com/uploads/images/LoRa_Web_Home_LoRaWAN.png"

@@ -2,6 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 // eslint-disable-next-line no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
+import { withErrorBoundary } from "react-error-boundary";
 
 function LineChart({ data, label, type }) {
   return (
@@ -30,4 +31,10 @@ function LineChart({ data, label, type }) {
   );
 }
 
-export default LineChart;
+function ErrorComponent() {
+  return <div>Something went wrong with data</div>;
+}
+
+export default withErrorBoundary(LineChart, {
+  FallbackComponent: ErrorComponent,
+});

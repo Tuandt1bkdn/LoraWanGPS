@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
-import styles from "./Manage.module.scss";
-import { useNavigate } from "react-router-dom";
+import styles from "./ChangeInfo.module.scss";
+//import { useNavigate } from "react-router-dom";
 import { DriverManage } from "src/api/services/getDataAPI";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 
 function Manage() {
+  //const [change, setChange] = useState(false);
+  const [dropbox, setDropbox] = useState(false);
+
   const [data, setData] = useState([]);
   useEffect(() => {
     DriverManage()
@@ -17,11 +22,6 @@ function Manage() {
       });
   }, []);
 
-  const navigate = useNavigate();
-  const routeChange = () => {
-    let path = `/thongso`;
-    navigate(path);
-  };
   return (
     <div className={cx("wrapper")}>
       <form>
@@ -91,7 +91,7 @@ function Manage() {
       </form>
 
       <div className={cx("body")}>
-        <div className="flex">
+        <div className="flex relative top-10">
           <a
             href={" "}
             className="w-[450px] flex items-center bg-white border rounded-lg shadow-md  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -144,7 +144,29 @@ function Manage() {
             </div>
           </a>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-[1400px] h-[800px] bg-white mt-20 pb-20">
+          <div className="text-xl right-0 w-[96%] h-24  flex flex-col items-end mr-10">
+            <button
+              className="absolute w-[280px] h-12  flex flex-row justify-between items-center border-[0.5px] border-solid border-black rounded-[5px] hover:border-solid hover:border-blue-600 hover:border-[1px]"
+              onClick={() => setDropbox(!dropbox)}>
+              <p className="ml-2">- Chọn mã tài xế -</p>
+              <FontAwesomeIcon icon={faCaretUp} className="mr-2" />
+            </button>
+            {dropbox && (
+              <div className="absolute z-10 mt-12 w-[280px] bg-white-100 min-h-[20px] border-[0.5px] divide-solid divide-black">
+                {data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-8 bg-white cursor-pointer  ">
+                    Ma tai xe : {item.iddriver}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="absolute w-20 h-[700px] bg-red-400 mt-20 mb-10"></div>
+        </div>
+        {/*
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
@@ -226,9 +248,27 @@ function Manage() {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             <button
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                              onClick={() => navigate(`/changeinfo`)}>
+                              onClick={() => setChange(true)}>
                               Sua doi
                             </button>
+                            {change && (
+                              <div className={cx("change-driverinfo")}>
+                                <div
+                                  className={cx("change-driverinfo_heading")}>
+                                  <div className="flex justify-center items-end text-xl text-black-300 w-full">
+                                    Sua thong tin
+                                  </div>
+                                  <div
+                                    className="w-8 h-8  absolute right-0 top-0 flex justify-center items-center text-2xl"
+                                    onClick={() => setChange(false)}>
+                                    X
+                                  </div>
+                                </div>
+                                <div className="w-full h-40 bg-red-400">
+                                  {item.car}
+                                </div>
+                              </div>
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -236,8 +276,8 @@ function Manage() {
                 </table>
               </div>
             </div>
-          </div>
-        </div>
+          </div
+                          */}
       </div>
     </div>
   );

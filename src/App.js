@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Manage from "./pages/Manage";
 import Location from "./pages/Location";
 import Warning from "./pages/Warning";
-import Searching from "./pages/Searching";
+import ChangeInfo from "./pages/ChangeInfo";
 import History from "./pages/History";
 import Setting from "./pages/Setting";
 import Information from "./pages/Information";
@@ -62,7 +62,7 @@ function App() {
             />
           </Route>
           <Route element={<PrivateRoute isAuthenticated={true} />}>
-            <Route path="/timduong" element={<Searching />} />
+            <Route path="/changeinfo" element={<ChangeInfo />} />
           </Route>
         </Routes>
       </div>

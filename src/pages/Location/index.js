@@ -58,16 +58,18 @@ function Location() {
 
   //API Lay toa do thuc va thong so thuc
   useEffect(() => {
-    getDataNow()
-      .then((res) => {
-        const lng = res.data[0].lng.toString(10);
-        const lat = res.data[0].lat.toString(10);
-        getLngLatNow(lng + "," + lat);
-        getPara(res.data[0]);
-      })
-      .catch((e) => {
-        console.log("e", e);
-      });
+    setInterval(() => {
+      getDataNow()
+        .then((res) => {
+          const lng = res.data[0].lng.toString(10);
+          const lat = res.data[0].lat.toString(10);
+          getLngLatNow(lng + "," + lat);
+          getPara(res.data[0]);
+        })
+        .catch((e) => {
+          console.log("e", e);
+        });
+    }, 5000);
   }, []);
 
   //API Geocoding
@@ -82,7 +84,7 @@ function Location() {
         setData2(json);
       })
       .catch((error) => {
-        console.log(error);
+        //console.log(error);
       });
   }, [lngLatNow]);
   const mapElement = useRef();
@@ -111,14 +113,14 @@ function Location() {
           //setMarkerdata2({ lng: res.data[1].lng, lat: res.data[2].lat });
           setMarkershows([
             { lng: res.data[0].lng, lat: res.data[0].lat },
-            { lng: res.data[1].lng, lat: res.data[2].lat },
+            { lng: res.data[1].lng, lat: res.data[1].lat },
           ]);
         })
         .catch((err) => console.log(err));
     }, 5000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  //console.log("markersshows", markersshows);
   const addMarker = () => {
     if (markersshows.length < 3) {
       // eslint-disable-next-line array-callback-return
@@ -129,6 +131,14 @@ function Location() {
       });
     }
   };
+
+  // eslint-disable-next-line no-lone-blocks
+
+  useEffect(() => {
+    setInterval(() => addMarker, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   //setInterval(() => addMarker(), 10000);
   const clear = () => {
     markers.forEach((marker) => marker.remove());
@@ -146,7 +156,7 @@ function Location() {
     const locations = markersshows;
     //const locations2 = [markers[1].getLngLat(), markers[2].getLngLat()];
     //const locations3 = [markers[2].getLngLat(), markers[3].getLngLat()];
-    console.log("locations :", locations);
+    //console.log("locations :", locations);
     calculateRoute(`${Math.random()}`, {
       key,
       locations,
@@ -174,6 +184,7 @@ function Location() {
       console.error(error);
     }
   };
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("mapwrap")}>
@@ -260,10 +271,19 @@ function Location() {
       {hideinfo && (
         <>
           {driverstate === 1 && (
-            <InforOnMap data={driver1} number={1} location={data2} />
+            <InforOnMap
+              data={driver1}
+              number={1}
+              location={data2}
+              time={para.realtimelocal}
+            />
           )}
-          {driverstate === 2 && (
+          {driverstate === 2 ? (
             <InforOnMap data={driver2} number={0} location={data2} />
+          ) : (
+            <div>
+              Khong the lay du lieu tu API, hay thu Refresh bang cach nhan F5
+            </div>
           )}
           {driverstate === 3 && (
             <InforOnMap data={driver3} number={0} location={data2} />

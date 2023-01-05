@@ -3,11 +3,11 @@ import {
   faHome,
   faLocationDot,
   faPhone,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './Footer.scss';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Footer.scss";
 
-// const cx = classNames.bind(styles);
+//const cx = classNames.bind(styles);
 
 function Footer() {
   return (

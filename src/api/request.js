@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://back-end-datn-sor1.vercel.app/",
+  baseURL: "http://localhost:5000",
   header: {
     "Content-Type": "application/json",
   },

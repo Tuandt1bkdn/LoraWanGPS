@@ -1,14 +1,14 @@
-import classNames from 'classnames/bind';
+//import classNames from 'classnames/bind';
 //import config from "src/config";
-import styles from './Sidebar.module.scss';
-import Menu, { MenuItem } from './Menu';
+//import styles from './Sidebar.module.scss';
+import Menu, { MenuItem } from "./Menu";
 import {
   faChartBar,
   faHome,
   faLocationDot,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
-const cx = classNames.bind(styles);
+//const cx = classNames.bind(styles);
 
 function Sidebar() {
   return (

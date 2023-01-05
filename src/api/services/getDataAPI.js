@@ -18,3 +18,11 @@ export function LoginManager() {
 export function DriverManage() {
   return http.get("/usermanage");
 }
+
+export function GetSaveAddress() {
+  return http.get("/saveaddress");
+}
+
+export function PostSaveAddress() {
+  return http.post("/saveaddress");
+}

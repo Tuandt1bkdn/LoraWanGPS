@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 function Warning() {
   const driverstate = useContext(UserContext);
   //const release = useContext()
-
+  const [loadingchart, setLoadingChart] = useState(true);
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([]);
   const [user3, setUser3] = useState([]);
@@ -70,6 +70,7 @@ function Warning() {
           json[1].realtimelocal.substring(0, 8),
           json[0].realtimelocal.substring(0, 8),
         ]);
+        setLoadingChart(false);
       });
     }, 30000);
   }, []);
@@ -94,9 +95,9 @@ function Warning() {
         });
     }, [5000]);
   }, []);
-  const temp = datanow.temp < 30;
-  const voltage = datanow.voltage < 15;
-  const speed = datanow.speed < 75;
+  const temp = datanow.temp < 80;
+  const voltage = datanow.voltage < 14 && datanow.voltage > 13;
+  const speed = datanow.speed < 85;
   return (
     <div className={cx("wrapper")}>
       <div className={cx("leftContent")}>
@@ -205,25 +206,35 @@ function Warning() {
           </div>
         </div>
         <div className={cx("rightBottom")}>
-          <div className={cx("chart")}>
-            {chart === "tempchart" && (
-              <LineChart
-                data={tempdata}
-                label={timelabeldata}
-                type="Temparature"
-              />
-            )}
-            {chart === "voltchart" && (
-              <LineChart
-                data={voltagedata}
-                label={timelabeldata}
-                type="Voltage"
-              />
-            )}
-            {chart === "speedchart" && (
-              <LineChart data={speeddata} label={timelabeldata} type="Speed" />
-            )}
-          </div>
+          {loadingchart ? (
+            <div className={cx("chart")}>
+              <h2>Loading...</h2>
+            </div>
+          ) : (
+            <div className={cx("chart")}>
+              {chart === "tempchart" && (
+                <LineChart
+                  data={tempdata}
+                  label={timelabeldata}
+                  type="Temparature"
+                />
+              )}
+              {chart === "voltchart" && (
+                <LineChart
+                  data={voltagedata}
+                  label={timelabeldata}
+                  type="Voltage"
+                />
+              )}
+              {chart === "speedchart" && (
+                <LineChart
+                  data={speeddata}
+                  label={timelabeldata}
+                  type="Speed"
+                />
+              )}
+            </div>
+          )}
           <div className={cx("choose")}>
             <button
               className={cx("button")}
