@@ -33,11 +33,13 @@ function InforOnMap({ data, number, location, time }) {
     body.idcar &&
       body.time &&
       body.address &&
-      axios.post("http://localhost:5000/saveaddress", body, axiosConfig).then();
+      axios
+        .post("https://back-end-datn-sor1.vercel.app/", body, axiosConfig)
+        .then();
   }
 
   function handleDeleteAddress(id) {
-    axios.delete(`http://localhost:5000/saveaddress/${id}`).then();
+    axios.delete(`https://back-end-datn-sor1.vercel.app//${id}`).then();
   }
 
   const handleShowAddress = () => {
