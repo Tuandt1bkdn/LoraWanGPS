@@ -6,6 +6,7 @@ import { useState, createContext } from "react";
 import Footer from "../Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Tippy from "@tippyjs/react/headless";
 //import { useStore } from "/src/store";
 
 export const UserContext = createContext();
